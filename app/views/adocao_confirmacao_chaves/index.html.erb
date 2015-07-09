@@ -1,0 +1,27 @@
+<h1>Listing adocao_confirmacao_chaves</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Dias validade</th>
+    <th>Chave valida</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @adocao_confirmacao_chaves.each do |adocao_confirmacao_chafe| %>
+  <tr>
+    <td><%= adocao_confirmacao_chafe.key %></td>
+    <td><%= adocao_confirmacao_chafe.dias_validade %></td>
+    <td><%= adocao_confirmacao_chafe.chave_valida %></td>
+    <td><%= link_to 'Show', adocao_confirmacao_chafe %></td>
+    <td><%= link_to 'Edit', edit_adocao_confirmacao_chafe_path(adocao_confirmacao_chafe) %></td>
+    <td><%= link_to 'Destroy', adocao_confirmacao_chafe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Adocao confirmacao chave', new_adocao_confirmacao_chafe_path %>

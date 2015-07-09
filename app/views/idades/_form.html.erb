@@ -1,0 +1,21 @@
+<%= form_for(@idade) do |f| %>
+  <% if @idade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@idade.errors.count, "error") %> prohibited this idade from being saved:</h2>
+
+      <ul>
+      <% @idade.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :idade_animal %><br />
+    <%= f.text_field :idade_animal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

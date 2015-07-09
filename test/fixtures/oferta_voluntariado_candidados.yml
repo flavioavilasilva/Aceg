@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  oferta_voluntariado_id: 1
+  usuario_id: 1
+  status_cadidatura: 
+
+two:
+  oferta_voluntariado_id: 1
+  usuario_id: 1
+  status_cadidatura: 

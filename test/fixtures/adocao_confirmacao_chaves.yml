@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: MyString
+  dias_validade: 1
+  data_criacao: 2013-09-04 00:55:46
+  chave_valida: 
+
+two:
+  key: MyString
+  dias_validade: 1
+  data_criacao: 2013-09-04 00:55:46
+  chave_valida: 

@@ -1,0 +1,28 @@
+<h1>Listing adocao_animais</h1>
+
+<table>
+  <tr>
+    <th>Doador animal</th>
+    <th>Adotando animal</th>
+    <th>Animal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @adocao_animais.each do |adocao_animal| %>
+  <tr>
+    <td><%= adocao_animal.doador_animal_id %></td>
+    <td><%= adocao_animal.adotando_animal_id %></td>
+    <td><%= adocao_animal.animal_id %></td>
+    <td><%= link_to 'Show', adocao_animal %></td>
+    <td><%= link_to 'Edit', edit_adocao_animal_path(adocao_animal) %></td>
+    <td><td><%= link_to 'Cancelar Adoção',{ :controller=>"cancelamento_adocoes", :action=> 'new', :adocao_animal=> adocao_animal } %></td></td>
+    <!-- <td><%= link_to 'Destroy', adocao_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Adocao animal', new_adocao_animal_path %>

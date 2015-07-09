@@ -1,0 +1,23 @@
+<h1>Listing tipo_animais</h1>
+
+<table>
+  <tr>
+    <th>Tipo animal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_animais.each do |tipo_animal| %>
+  <tr>
+    <td><%= tipo_animal.tipo_animal %></td>
+    <td><%= link_to 'Show', tipo_animal %></td>
+    <td><%= link_to 'Edit', edit_tipo_animal_path(tipo_animal) %></td>
+    <td><%= link_to 'Destroy', tipo_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo animal', new_tipo_animal_path %>

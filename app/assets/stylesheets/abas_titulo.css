@@ -1,0 +1,68 @@
+.abasHeading .mainHeading h2:after,
+.abasHeading .mainHeading h3:after,
+.abasHeading .mainHeading h4:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+
+}
+ 
+.abasHeading .mainHeading h2:after { background: #0AF; }
+.abasHeading .mainHeading h3:after { background: rgba(68,162,219,0.8); }
+.abasHeading .mainHeading h4:after { background: #6Cf; }
+ 
+.abasHeading .mainHeading h1 {
+    font-size: 36px;
+    line-height: 40px;
+    margin: 1em 0 .6em 0;
+    font-weight: normal;
+    color: #94999C;
+    font-family: 'Hammersmith One', sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    color: #6Cf;
+		background:#B8C3C9;
+}
+ 
+.abasHeading .mainHeading h2 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: white;
+    font-family: 'Nixie One', sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 30px;
+    line-height: 40px;
+		background:#B8C3C9;
+}
+ 
+.abasHeading .mainHeading h3 {
+
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: rgba(68,162,219,1);
+    font-family: 'Nixie One', sans-serif;
+    position: relative;
+    font-size: 26px;
+    line-height: 40px;
+		background:#fff;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+ 
+.abasHeading .mainHeading h4 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: white;
+    font-family: 'Hammersmith One', sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'Questrial', sans-serif;
+		background:#B8C3C9;
+}

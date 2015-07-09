@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+  	<title>ACEG</title>
+  	
+  	
+	<%= javascript_include_tag "application" %>
+	
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<%= stylesheet_link_tag    "menu", :media => "all" %>
+	<%= stylesheet_link_tag    "menu_topo", :media => "all" %>
+	<%= stylesheet_link_tag    "abas_titulo", :media => "all" %>
+	<%= stylesheet_link_tag    "home_scroll", :media => "all" %>
+	<%= stylesheet_link_tag    "font-awesome/css/font-awesome", :media => "all" %>
+	<%= stylesheet_link_tag    "component", :media => "all" %>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	
+	<%= csrf_meta_tag %>
+	
+	<script src="../../assets/javascripts/classie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../assets/javascripts/modernizr.custom.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../assets/javascripts/gnmenu.js" type="text/javascript" charset="utf-8"></script>
+	
+	<link rel="stylesheet" href="../../assets/stylesheets/component.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script src="../../assets/javascripts/modernizr.custom.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:300italic' rel='stylesheet' type='text/css'>
+	
+<link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+	
+</head>
+
+<body>
+	<p class='notice'><%= notice %></p>
+	<p class='alert'><%= notice %></p>
+	
+	<!--
+	<div id="topo">
+	<%= render "layouts/topo" %>
+		<div id="container">
+	</div> -->
+		
+	<div id="topo" class="topo">
+		
+		<div class="container">
+			<ul id="gn-menu" class="gn-menu-main" style="z-index:1000">
+			    <li class="gn-trigger">
+			        <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+			        <nav class="gn-menu-wrapper">
+								<div class="gn-scroller">
+								    <ul class="gn-menu">
+								        <li>
+								            <a class="gn-icon gn-icon-download">Animais</a>
+								            <ul class="gn-submenu">
+																<li><a  href="/animais" title="Adotar" class="gn-icon gn-icon-photoshop">Adotar</a></li>
+								                <li><a  href="/animais/new" title="Doar" class="gn-icon gn-icon-illustrator">Doar</a></li>
+																<li><a  href="/minhas_adocoes" title="Minhas adocões" class="gn-icon gn-icon-photoshop">Minhas 																adoções</a></li>
+																<li><a  href="/minhas_doacoes" title="Minhas doações" class="gn-icon gn-icon-photoshop">Minhas 																doações</a></li>
+								            </ul>
+								        </li>
+								        <li><a class="gn-icon gn-icon-cog">Ong's</a></li>
+												<li><a class="gn-icon gn-icon-cog">Voluntáriado</a>
+												<ul class="gn-submenu">
+													<li><a href="/oferta_voluntariado" title="Adotar" class="gn-icon gn-icon-photoshop">Seja 													voluntário</a></li>
+													<li><a href="/oferta_voluntariado/new" title="Adotar" class="gn-icon gn-icon-photoshop">Ofertas 													voluntáriado</a>
+													</li>
+												</ul>
+												</li>
+								        <li><a class="gn-icon gn-icon-cog">Quem somos</a></li>
+												<li><a class="gn-icon gn-icon-cog">Contato</a></li>
+								    </ul>
+								</div><!-- /gn-scroller -->
+			        </nav>
+			    </li>
+			    <li>
+						<a href="http://localhost:3000/">Aceg</a></li>
+			    <li>
+					</li>
+			    <!-- ... -->
+			</ul>	
+		</div>
+	
+		<div style="z-index:1001; position:absolute;right:1%;top:1%"><%= render "layouts/navigation" %></div>
+	</div>
+</div>
+
+<div>
+<%= yield %>
+</div>
+	
+<footer>
+</footer>
+	
+</body>
+</html>
+
+
+
+
+<!--
+<style>
+*,
+*:after,
+*::before {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'ecoicons';
+    src: url("../fonts/ecoicons/ecoicons.eot");
+    src: url("../fonts/ecoicons/ecoicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ecoicons/ecoicons.woff") format("woff"), url("../fonts/ecoicons/ecoicons.ttf") format("truetype"), url("../fonts/ecoicons/ecoicons.svg#ecoicons") format("svg");
+}
+
+.gn-menu-main,
+.gn-menu-main ul {
+    margin: 0;
+    padding: 0;
+    background: #d6f4ed;
+    color: #fff;
+    list-style: none;
+    text-transform: none;
+    font-weight: 300;
+    font-family: 'Lato', Arial, sans-serif;
+    line-height: 60px;
+}
+
+.gn-menu-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+		width:100%;
+    font-size: 13px;
+		border-bottom-style:solid;
+}
+
+.gn-menu-main a {
+    display: block;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.no-touch .gn-menu-main a:hover,
+.no-touch .gn-menu li.gn-search-item:hover,
+.no-touch .gn-menu li.gn-search-item:hover a {
+    background: #fff;
+    color: #d6f4ed;
+}
+
+.gn-menu-main > li {
+    display: block;
+    float: left;
+    height: 100%;
+    border-right: 1px solid #c6d0da;
+    text-align: center;
+}
+
+.gn-menu-main li.gn-trigger {
+    position: relative;
+    width: 60px;
+    user-select: none;
+}
+
+.gn-menu-main > li:last-child {
+    float: right;
+    border-right: none;
+    border-left: 1px solid #c6d0da;
+}
+
+.gn-menu-main > li > a {
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.gn-menu-main:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+.gn-menu-wrapper {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 60px; /* will be transitioned to 340px */
+    border-top: 1px solid #c6d0da;
+    background: white;
+    transform: translateX(-60px); /* will be transitioned to 0px */
+    transition: transform 0.3s, width 0.3s;
+}
+ 
+.gn-scroller {
+    position: absolute;
+    overflow-y: scroll;
+    width: 370px;
+    height: 100%;
+}
+ 
+.gn-menu {
+    border-bottom: 1px solid #c6d0da;
+    text-align: left;
+    font-size: 18px;
+}
+
+.gn-menu li:not(:first-child),
+.gn-menu li li {
+    box-shadow: inset 0 1px #c6d0da
+}
+
+.gn-submenu li {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s;
+}
+
+.gn-submenu li a {
+    color: #c1c9d1
+}
+
+input.gn-search {
+    position: relative;
+    z-index: 10;
+    padding-left: 60px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-weight: 300;
+    font-family: 'Lato', Arial, sans-serif;
+    cursor: pointer;
+}
+ 
+/* placeholder */
+ 
+.gn-search::-webkit-input-placeholder {
+    color: #fff
+}
+ 
+.gn-search:-moz-placeholder {
+    color: #fff
+}
+ 
+.gn-search::-moz-placeholder {
+    color: #fff
+}
+ 
+.gn-search:-ms-input-placeholder {
+    color: #fff
+}
+
+.gn-search:focus::-webkit-input-placeholder,
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:focus::-webkit-input-placeholder {
+    color: transparent
+}
+ 
+input.gn-search:focus {
+    cursor: text
+}
+
+.no-touch .gn-menu li.gn-search-item:hover input.gn-search {
+    color: white
+}
+
+/* placeholder */
+ 
+.no-touch .gn-menu li.gn-search-item:hover .gn-search::-webkit-input-placeholder {
+    color: white
+}
+ 
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:-moz-placeholder {
+    color: white
+}
+ 
+.no-touch .gn-menu li.gn-search-item:hover .gn-search::-moz-placeholder {
+    color: white
+}
+ 
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:-ms-input-placeholder {
+    color: white
+}
+
+.gn-menu-main a.gn-icon-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+}
+
+.gn-icon::before {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'ecoicons';
+    line-height: 1;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.gn-icon-help::before {
+    content: "\e000"
+}
+ 
+.gn-icon-cog::before {
+    content: "\e006"
+}
+ 
+.gn-icon-search::before {
+    content: "\e005"
+}
+ 
+.gn-icon-download::before {
+    content: "\e007"
+}
+ 
+.gn-icon-photoshop::before {
+    content: "\e001"
+}
+ 
+.gn-icon-illustrator::before {
+    content: "\e002"
+}
+ 
+.gn-icon-archive::before {
+    content: "\e00d"
+}
+ 
+.gn-icon-article::before {
+    content: "\e003"
+}
+ 
+.gn-icon-pictures::before {
+    content: "\e008"
+}
+ 
+.gn-icon-videos::before {
+    content: "\e009"
+}
+
+.gn-icon span {
+    width: 0;
+    height: 0;
+    display: block;
+    overflow: hidden;
+}
+
+.gn-icon-menu::before {
+    margin-left: -15px;
+    vertical-align: -2px;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    box-shadow: 0 3px white, 0 -6px #fff, 0 -9px white, 0 -12px #fff;
+    content: '';
+}
+
+.no-touch .gn-icon-menu:hover::before,
+.no-touch .gn-icon-menu.gn-selected:hover::before {
+    background: white;
+    box-shadow: 0 3px #fff, 0 -6px white, 0 -9px #fff, 0 -12px white;
+}
+
+.gn-icon-menu.gn-selected::before {
+    background: #5993cd;
+    box-shadow: 0 3px white, 0 -6px #5993cd, 0 -9px white, 0 -12px #5993cd;
+}
+
+.gn-menu-wrapper.gn-open-all,
+.gn-menu-wrapper.gn-open-part {
+    transform: translateX(0px);
+}
+
+.gn-menu-wrapper.gn-open-all {
+    width: 340px;
+}
+
+.gn-menu-wrapper.gn-open-all .gn-submenu li {
+    height: 60px;
+}
+
+@media screen and (max-width: 422px) {
+    .gn-menu-wrapper.gn-open-all {
+        transform: translateX(0px);
+        width: 100%;
+    }
+ 
+    .gn-menu-wrapper.gn-open-all .gn-scroller {
+        width: 130%;
+    }
+}
+
+</style>
+
+-->
+
+<script>
+	new gnMenu( document.getElementById( 'gn-menu' ) );
+</script>
+

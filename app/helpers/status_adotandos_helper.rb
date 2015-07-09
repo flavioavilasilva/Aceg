@@ -1,0 +1,2 @@
+module StatusAdotandosHelper
+end

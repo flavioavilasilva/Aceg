@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <%= image_tag @estabelecimento.foto.url(:thumb) %>
+</p>
+<p>
+  <b>Estabelecimento:</b>
+  <%= @estabelecimento.estabelecimento %>
+</p>
+
+<p>
+  <b>Tipo servico:</b>
+  <%= @estabelecimento.tipo_servico_id %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @estabelecimento.estado_id %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @estabelecimento.cidade_id %>
+</p>
+
+<p>
+  <b>Bairro:</b>
+  <%= @estabelecimento.bairro_id %>
+</p>
+
+<p>
+  <b>Rua:</b>
+  <%= @estabelecimento.rua %>
+</p>
+
+<p>
+  <b>Numero rua:</b>
+  <%= @estabelecimento.numero_rua %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @estabelecimento.telefone %>
+</p>
+
+<p>
+  <b>Descricao servico:</b>
+  <%= @estabelecimento.descricao_servico %>
+</p>
+
+
+<%= link_to 'Edit', edit_estabelecimento_path(@estabelecimento) %> |
+<%= link_to 'Back', estabelecimentos_path %>

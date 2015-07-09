@@ -1,0 +1,23 @@
+<h1>Listing status_ativs</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_ativs.each do |status_ativ| %>
+  <tr>
+    <td><%= status_ativ.status_ativ %></td>
+    <td><%= link_to 'Show', status_ativ %></td>
+    <td><%= link_to 'Edit', edit_status_ativ_path(status_ativ) %></td>
+    <td><%= link_to 'Destroy', status_ativ, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status ativ', new_status_ativ_path %>

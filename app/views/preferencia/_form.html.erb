@@ -1,0 +1,53 @@
+<%= form_for(@preferencium) do |f| %>
+  <% if @preferencium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@preferencium.errors.count, "error") %> prohibited this preferencium from being saved:</h2>
+
+      <ul>
+      <% @preferencium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.number_field :tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :porte %><br />
+    <%= f.number_field :porte %>
+  </div>
+  <div class="field">
+    <%= f.label :peso %><br />
+    <%= f.text_field :peso %>
+  </div>
+  <div class="field">
+    <%= f.label :cor %><br />
+    <%= f.text_field :cor %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br />
+    <%= f.number_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :cidade %><br />
+    <%= f.number_field :cidade %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_doador %><br />
+    <%= f.number_field :tipo_doador %>
+  </div>
+  <div class="field">
+    <%= f.label :prioridade_adocao %><br />
+    <%= f.number_field :prioridade_adocao %>
+  </div>
+  <div class="field">
+    <%= f.label :foto %><br />
+    <%= f.text_field :foto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

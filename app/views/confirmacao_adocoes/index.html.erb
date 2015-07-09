@@ -1,0 +1,54 @@
+<h1>Confirmações Doador</h1>
+<table>
+  <tr>
+    <th>Adocao animal</th>
+    <th>Confirmacao doador</th>
+    <th>Confirmacao adotando</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @confirmacao_adocao_doador.each do |confirmacao_adocao_doador| %>
+  <tr>
+    <td><%= confirmacao_adocao_doador.adocao_animal.animal.nome %></td>
+    <td><%= confirmacao_adocao_doador.status_confirmacao_doador_id %></td>
+    <td><%= confirmacao_adocao_doador.status_confirmacao_adotando_id %></td>
+    <td><%= link_to 'Show', confirmacao_adocao_doador %></td>
+    <td><%= link_to 'Edit', edit_confirmacao_adocao_path(confirmacao_adocao_doador) %></td>
+    <td><%= link_to 'Destroy', confirmacao_adocao_doador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+
+<br>
+
+</table>
+
+<br />
+
+<h1>Confirmações Adotando</h1>
+<table>
+  <tr>
+    <th>Adocao animal</th>
+    <th>Confirmacao doador</th>
+    <th>Confirmacao adotando</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @confirmacao_adocao_adotando.each do |confirmacao_adocao_adotando| %>
+  <tr>
+    <td><%= confirmacao_adocao_adotando.adocao_animal.animal.nome %></td>
+    <td><%= confirmacao_adocao_adotando.status_confirmacao_doador_id %></td>
+    <td><%= confirmacao_adocao_adotando.status_confirmacao_adotando_id %></td>
+    <td><%= link_to 'Show', confirmacao_adocao_adotando %></td>
+    <td><%= link_to 'Edit', edit_confirmacao_adocao_path(confirmacao_adocao_adotando) %></td>
+    <td><%= link_to 'Destroy', confirmacao_adocao_adotando, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+
+<br>
+
+</table>

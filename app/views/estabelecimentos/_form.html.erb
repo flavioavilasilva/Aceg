@@ -1,0 +1,59 @@
+<%= form_for @estabelecimento, html: {multipart: true} do |f| %>
+
+  <% if @estabelecimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estabelecimento.errors.count, "error") %> prohibited this estabelecimento from being saved:</h2>
+
+      <ul>
+      <% @estabelecimento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :estabelecimento %><br />
+    <%= f.text_field :estabelecimento %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_servico_id %><br />
+    <%= f.number_field :tipo_servico_id %>
+  </div>
+  <div class="field">
+    <%= f.label :estado_id %><br />
+    <%= f.number_field :estado_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cidade_id %><br />
+    <%= f.number_field :cidade_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bairro_id %><br />
+    <%= f.number_field :bairro_id %>
+  </div>
+  <div class="field">
+    <%= f.label :rua %><br />
+    <%= f.text_field :rua %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_rua %><br />
+    <%= f.text_field :numero_rua %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br />
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao_servico %><br />
+    <%= f.text_field :descricao_servico %>
+  </div>
+  
+  <div class="field">
+   <%= f.file_field :foto %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

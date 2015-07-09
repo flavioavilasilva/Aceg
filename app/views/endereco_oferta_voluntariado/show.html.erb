@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rua:</b>
+  <%= @endereco_oferta_voluntariado.rua %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @endereco_oferta_voluntariado.numero %>
+</p>
+
+<p>
+  <b>Cep:</b>
+  <%= @endereco_oferta_voluntariado.cep %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @endereco_oferta_voluntariado.estado_id %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @endereco_oferta_voluntariado.cidade_id %>
+</p>
+
+<p>
+  <b>Oferta voluntariado:</b>
+  <%= @endereco_oferta_voluntariado.oferta_voluntariado_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_endereco_oferta_voluntariado_path(@endereco_oferta_voluntariado) %> |
+<%= link_to 'Back', endereco_oferta_voluntariado_index_path %>

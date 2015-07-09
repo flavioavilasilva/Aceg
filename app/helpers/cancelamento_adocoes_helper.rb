@@ -1,0 +1,2 @@
+module CancelamentoAdocoesHelper
+end

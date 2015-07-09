@@ -1,0 +1,29 @@
+<h1>Listing oferta_voluntariado</h1>
+
+<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Descricao</th>
+    <th>Usuario</th>
+    <th>Vigencia oferta</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @oferta_voluntariado.each do |oferta_voluntariado| %>
+  <tr>
+    <td><%= oferta_voluntariado.titulo %></td>
+    <td><%= oferta_voluntariado.descricao %></td>
+    <td><%= oferta_voluntariado.usuario_id %></td>
+    <td><%= oferta_voluntariado.vigencia_oferta_id %></td>
+    <td><%= link_to 'Show', oferta_voluntariado %></td>
+    <td><%= link_to 'Edit', edit_oferta_voluntariado_path(oferta_voluntariado) %></td>
+    <td><%= link_to 'Destroy', oferta_voluntariado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Oferta voluntariado', new_oferta_voluntariado_path %>

@@ -1,0 +1,59 @@
+<%= form_for @confirmacao_adocao, html: {multipart: true} do |f| %>
+  <% if @confirmacao_adocao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@confirmacao_adocao.errors.count, "error") %> prohibited this confirmacao_adocao from being saved:</h2>
+
+      <ul>
+      <% @confirmacao_adocao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+		<%= f.hidden_field :adocao_animal_id, :value=>@confirmacao_adocao.adocao_animal_id %>
+  </div>
+  
+  <div class="field">
+		Doador:
+		<%= f.label @confirmacao_adocao.adocao_animal.doador_animal.perfil.nome %><br />
+  </div>
+  
+  
+  <div class="field">
+		Adotante:
+		<%= f.label  @confirmacao_adocao.adocao_animal.adotando_animal.perfil.nome %><br />
+  </div>
+  
+  
+  <div class="field">
+    	Nome animal:
+		<%= f.label @confirmacao_adocao.adocao_animal.animal.nome %><br />
+  </div>
+  <div class="field">
+    	Confirmação doador:
+    	<% if !@contesto_doador.blank? %>
+    		<%= f.collection_select(:status_confirmacao_doador_id, StatusConfirmacaoDoador.order(:status_confirmacao_doador),
+                                        :id, :status_confirmacao_doador, {:prompt => true}) %>
+        <% else %>
+        	<%= f.collection_select(:status_confirmacao_doador_id, StatusConfirmacaoDoador.order(:status_confirmacao_doador),
+                                        :id, :status_confirmacao_doador, {:prompt => true}, :disabled => true) %>
+        <% end %>
+  </div>
+  <div class="field">
+    	Confirmação adotando:
+    	<% if !@contesto_adotando.blank? %>
+    		<%= f.collection_select(:status_confirmacao_adotando_id, StatusConfirmacaoAdotando.order(:status_confirmacao_adotando),
+                                        :id, :status_confirmacao_adotando, {:prompt => true}) %>
+        <%else%>
+        	<%= f.collection_select(:status_confirmacao_adotando_id, StatusConfirmacaoAdotando.order(:status_confirmacao_adotando),
+                                        :id, :status_confirmacao_adotando, {:prompt => true}, :disabled => true ) %>
+        <%end%>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

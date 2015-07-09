@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  estabelecimento_id: 1
+  comentario: MyString
+  nota: 1.5
+  usuario_id: MyString
+
+two:
+  estabelecimento_id: 1
+  comentario: MyString
+  nota: 1.5
+  usuario_id: MyString

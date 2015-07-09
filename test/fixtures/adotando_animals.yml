@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 1
+  adotando_desde: 2013-08-11 20:41:33
+  status_adotando_id: 1
+
+two:
+  usuario_id: 1
+  adotando_desde: 2013-08-11 20:41:33
+  status_adotando_id: 1

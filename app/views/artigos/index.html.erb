@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<%= javascript_tag "var autocomplete_items = #{ @artigos.to_json };" %>
+
+<h1>Artigos</h1>
+
+
+
+<!--
+<%= form_tag artigos_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<form id="live-search-form" method="get" action="<%= artigos_path %>">
+  <input id="big-search-box" name="query" type="text"/>
+</form>
+<div id="live-search-results" style='background-color:red'></div>
+
+<div id="sb-search" class="sb-search">
+<%= form_tag artigos_path, :class=>'form-wrapper cf', method: :get do %>
+    <%= text_field_tag :query, params[:query], :class=>'caixa'  %>
+    <%= submit_tag "Search", name: nil, :class=>'submit' %>
+<% end %>
+</div>
+
+-->
+
+<form class="form-wrapper cf" method="get" action="<%= artigos_path %>" >
+    <input type="text" id='query' placeholder="Coloque qualquer termo relevante..." required name="query">
+    <button type="submit">Buscar</button>
+</form> 
+
+
+
+<div>
+	
+<table>
+	<% if !@artigos.blank? %>
+  <tr>
+    <th>Autor</th>
+    <th>Fonte</th>
+    <th>Data publicacao</th>
+    <th>Titulo</th>
+    <th>Artigo</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @artigos.each do |artigo| %>
+  <tr>
+    <td><%= artigo.autor %></td>
+    <td><%= artigo.fonte %></td>
+    <td><%= artigo.data_publicacao %></td>
+    <td><%= artigo.titulo %></td>
+    <td><%= artigo.artigo[0..120] %></td>
+    <td><%= link_to 'Show', artigo %></td>
+    <td><%= link_to 'Edit', edit_artigo_path(artigo) %></td>
+    <td><%= link_to 'Destroy', artigo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<%else%>
+Dados indisponiveis!
+<% end%>
+
+</div>
+
+</table>
+
+<br />
+
+<%= link_to 'New Artigo', new_artigo_path %>
+
+<script type="text/javascript">
+
+	//$('#query').typeahead({source: autocomplete_items});
+	
+	$('#query').typeahead({
+		
+	name: 'artigo',
+	remote: 'artigos.json?query=%QUERY',
+  template: '<p><strong>{{titulo}}</strong><br/>-{{foto}}</p>',
+ 	engine: Hogan
+
+	});
+
+</script>
+
+<style>
+
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+ 
+.cf:after{
+    clear:both;
+}
+ 
+.cf{
+    zoom:1;
+} 
+
+/* Form wrapper styling */
+.form-wrapper {
+    width: 450px;
+    padding: 15px;
+    margin: 150px auto 50px auto;
+    background: #444;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+		height:50px;
+}
+ 
+/* Form text input */
+ 
+.form-wrapper input {
+    width: 330px;
+    height: 20px;
+    padding: 10px 5px;
+    float: left;   
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    border-radius: 3px 0 0 3px;     
+}
+ 
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+ 
+.form-wrapper input::-webkit-input-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+}
+ 
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+ 
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}   
+ 
+/* Form submit button */
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #DEF296;
+    border-radius: 0 3px 3px 0;     
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}  
+   
+.form-wrapper button:hover{    
+    background: #B2C278;
+}  
+   
+.form-wrapper button:active,
+.form-wrapper button:focus{  
+    background: #c42f2f;
+    outline: 0;  
+}
+ 
+.form-wrapper button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #DEF296 transparent;
+    top: 12px;
+    left: -6px;
+}
+ 
+.form-wrapper button:hover:before{
+    border-right-color: #e54040;
+}
+ 
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before{
+        border-right-color: #c42f2f;
+}     
+ 
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+}    
+
+</style>
+

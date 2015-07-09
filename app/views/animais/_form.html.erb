@@ -1,0 +1,181 @@
+<%= javascript_include_tag "geo_location_to_form.js" %>
+
+
+<%= form_for @animal, html: {multipart: true} do |f| %>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+      <ul>
+      <% @animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+  <div class="field">
+   <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :tipo_animal_id %><br />
+    <%= f.collection_select(:tipo_animal_id, TipoAnimal.order(:tipo_animal),
+                                    :id, :tipo_animal, {:prompt => true}) %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :raca_id %><br />
+    <%= f.collection_select(:raca_id, Raca.order(:raca),
+                                    :id, :raca, {:prompt => true}) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :cep %><br />
+    <%= f.text_field :cep, :id=>'animal_cep', 'onBlur' => "jsBuscaCep('animal_cep', 'animal_estado_id', 'animal_cidade_id', 'animal_rua')"%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Estado %><br />
+    <%= f.collection_select(:estado_id, [], :estado, :include_blank => 'Selecione um estado')  %>
+  </div>
+  <div class="field">
+   <%= f.label :Cidade %><br />
+   <%= f.collection_select :cidade_id, [], :cidade, :include_blank => 'Selecione uma cidade' %>
+  </div>
+  <div class="field">
+    <%= f.label :Rua %><br />
+    <%= f.text_field :rua , :id=>'animal_rua'%>
+  </div>
+  <div class="field">
+    <%= f.label :Número %><br />
+    <%= f.text_field :numero_rua , :id=>'animal_numero_rua'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :prioridade_adocao_id %><br />
+    <%= f.collection_select(:prioridade_adocao_id, PrioridadeAdocao.order(:prioridade_adocao),
+                                        :id, :prioridade_adocao, {:prompt => true}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Descrição %><br />
+    <%= f.text_area :descricao_animal %>
+  </div>
+  <%= f.file_field :foto %>
+  <br>
+  <%= f.fields_for :galeria_animal do |galeria_animal| %>
+  	<%= galeria_animal.file_field :foto %><br>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+
+<script type="text/javascript">
+
+ 	getLocation();
+
+ 	jQuery(window).load(function($){
+ 		
+ 		cep = document.getElementById( "animal_cep" ).value;
+
+ 		var intervalo = setInterval(function() {
+ 			
+ 			//Verifica se cep foi preenchido
+	    	if (cep != '')
+	    	{
+					
+						
+						jsBuscaCep('animal_cep', 'animal_estado_id', 
+						'animal_cidade_id', 'animal_rua');
+						limpaIntervalo(intervalo);
+						
+					}
+					
+		  }, 2000);
+		  
+	});
+
+  function limpaIntervalo(intervalo)
+  {
+  	clearInterval(intervalo);
+	intervalo = 0;
+  }
+  
+  function getLocation()
+  {
+
+  if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(showPosition,showError);
+	}
+  else{alert("Geolocation is not supported by this browser.");}
+  }
+  
+  
+  function showPosition(position)
+  {
+  	
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  
+	var lat = parseFloat(position.coords.latitude);
+	var lng = parseFloat(position.coords.longitude);
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'latLng': latlng}, function(dataLocation, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			
+			var elementoCep = document.getElementById( "animal_cep" );
+			dadosLocalizacao(dataLocation, elementoCep)
+		
+			/*console.log('cep '+ dataLocation[0].address_components[6].long_name)
+			console.log('Estado '+ dataLocation[0].address_components[4].long_name)
+			console.log('Cidade '+ dataLocation[0].address_components[3].long_name)
+			
+			estado=dataLocation[0].address_components[4].long_name;
+			cidade=dataLocation[0].address_components[3].long_name;
+			cep=dataLocation[0].address_components[6].long_name;
+			
+			processaEstadoCidade(estado,cidade,cep);
+			console.log(dataLocation)
+			
+			document.getElementById( "animal_cep" ).value = cep;
+			console.log( "data location success urlApiGoogle");*/
+		}
+	});
+
+  }
+  
+  function showError(error)
+  {
+  	switch(error.code)
+    {
+    	case error.PERMISSION_DENIED:
+      	alert("é necessário ter acesso a dados de localização, você será redirecionado para informar de forma manual");
+     	 break;
+    	case error.POSITION_UNAVAILABLE:
+      	alert("Location information is unavailable.");
+     	 break;
+    	case error.TIMEOUT:
+      	alert("The request to get user location timed out.");
+      	break;
+    	case error.UNKNOWN_ERROR:
+      	alert("An unknown error occurred.");
+      	break;
+    }
+    
+	 var urlEstadoCidade = "/local_estado_cidade";
+	 console.log(urlEstadoCidade);
+  	
+  	$(window.document.location).attr('href',urlEstadoCidade);		
+  	 
+  }
+	
+</script>
+
+ 

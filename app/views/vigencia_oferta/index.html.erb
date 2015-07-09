@@ -1,0 +1,23 @@
+<h1>Listing vigencia_oferta</h1>
+
+<table>
+  <tr>
+    <th>Vigencia</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vigencia_oferta.each do |vigencia_ofertum| %>
+  <tr>
+    <td><%= vigencia_ofertum.vigencia %></td>
+    <td><%= link_to 'Show', vigencia_ofertum %></td>
+    <td><%= link_to 'Edit', edit_vigencia_ofertum_path(vigencia_ofertum) %></td>
+    <td><%= link_to 'Destroy', vigencia_ofertum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vigencia ofertum', new_vigencia_ofertum_path %>

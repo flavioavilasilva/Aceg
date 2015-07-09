@@ -1,0 +1,47 @@
+<%= form_for(@cancelamento_adocao) do |f| %>
+  <% if @cancelamento_adocao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cancelamento_adocao.errors.count, "error") %> prohibited this cancelamento_adocao from being saved:</h2>
+
+      <ul>
+      <% @cancelamento_adocao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.hidden_field :adocao_animal_id, :value=> @adocao_animal.id %>
+  </div>
+  
+  <div class="field">
+  	Solicitante cancelamento:<br />
+    <%= f.hidden_field :cancelamento_solicitante_id, :value=> current_usuario.id %>
+    <%= f.label  current_usuario.perfil.nome %>
+  </div>
+
+  <div class="field">
+  	Doador:<br />
+    <%= f.hidden_field :doador_animal_id, :value=> @adocao_animal.doador_animal_id %>
+    <%= f.label @adocao_animal.doador_animal.perfil.nome %>
+  </div>
+  
+  <div class="field">
+    Adotando:<br/>
+    <%= f.hidden_field :adotando_animal_id, :value=> @adocao_animal.adotando_animal_id %>
+    <%= f.label @adocao_animal.adotando_animal.perfil.nome %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :motivo_cancelamento_id %><br />
+    <%= f.number_field :motivo_cancelamento_id %>
+  </div>
+  <div class="field">
+    <%= f.label :motivo_cancelamento %><br />
+    <%= f.text_area :motivo_cancelamento %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

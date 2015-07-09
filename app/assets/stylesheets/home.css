@@ -1,0 +1,163 @@
+
+
+h1{color: #94999C;top:10px;font-family:corbert;
+	font-size:12pt;
+}
+
+h2{background-color:#fff;width:100%;padding:5px;color:#8abadd;text-align:center;font-family:'Nothing You Could Do'}
+
+
+/* Lista Porque Adotar */
+
+.tituloHome{font-family: 'Nothing You Could Do', 'cursive';font-size:38px;color:#8abadd;font-weight:bold;}
+h1#porqAdotarTitle{font-family: 'Nothing You Could Do', 'cursive';font-size:38px;color:#8abadd;font-weight:bold;}
+
+.adotar-st-accordion{
+    width:100%;
+    min-width:270px;
+    margin: 0 auto;
+}
+
+.adotar-st-accordion ul li{
+    height: 100px;
+    border-bottom: 1px solid #c7deef;
+    overflow: hidden;
+}
+
+.adotar-st-accordion ul li:first-child{
+    border-top:none;
+}
+
+.adotar-st-accordion ul li > a{
+    font-family: 'Josefin Slab',Georgia, serif;
+    font-size: 32px;
+    display: block;
+    position: relative;
+    line-height: 100px;
+    outline:none;
+    -webkit-transition:  color 0.2s ease-in-out;
+    -moz-transition:  color 0.2s ease-in-out;
+    -o-transition:  color 0.2s ease-in-out;
+    -ms-transition:  color 0.2s ease-in-out;
+    transition:  color 0.2s ease-in-out;
+}
+.adotar-st-accordion ul li > a:hover{
+    color: #8abadd;
+}
+
+.adotar-st-accordion ul li > a span{
+		
+    background: transparent url(/images/down.png) no-repeat center center;
+    text-indent:-9000px;
+    width: 26px;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    right: -26px;
+    margin-top: -7px;
+    opacity:0;
+    -webkit-transition:  all 0.2s ease-in-out;
+    -moz-transition:  all 0.2s ease-in-out;
+    -o-transition:  all 0.2s ease-in-out;
+    -ms-transition:  all 0.2s ease-in-out;
+    transition:  all 0.2s ease-in-out;
+}
+
+.adotar-st-accordion ul li > a:hover span{
+    opacity:1;
+    right: 10px;
+}
+
+.adotar-st-accordion ul li.st-open > a{
+    color: #1693eb;
+}
+.adotar-st-accordion ul li.st-open > a span{
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    transform:rotate(180deg);
+    right:10px;
+    opacity:1;
+}
+
+.adotar-st-content{
+    padding: 5px 0px 30px 0px;
+}
+.adotar-st-content p{
+    font-size:  16px;
+    font-family:  Georgia, serif;
+    font-style: italic;
+    line-height:  28px;
+    padding: 0px 4px 15px 4px;
+}
+.adotar-st-content img{
+    width:125px;
+    border-right:1px solid #fff;
+    border-bottom:1px solid #fff;
+}
+
+@media screen and (max-width: 320px){
+    .adotar-st-accordion ul li > a{
+        font-size:36px;
+    }
+}
+
+#titPorqAdotar{font-size:24pt;color:#fff;}
+.listaPorqAdotar{list-style:none;padding:20px;}
+#porqAdotar{text-align:left;font-size:18pt;padding:25px;}
+
+/* --- */
+
+.hr{width: 95%;background-color:#bbb;margin: 4.5%;}
+
+
+.divPrincipalPrioridade{float:left;width:35%;margin: 1%;}
+.divPrincipalSaibaComo{float:left;width:35%;margin: 1%;}
+
+.float_left_canvas{
+	float:left;height:90%; width:31%;margin: 1%;z-index:1000;
+	-webkit-filter: opacity(0.7); 
+}
+
+.animalPrioridade
+{
+	position:relative;
+	width: 43%;margin: 1%;
+	padding:4px;
+	border:0px solid #fff;font-size:8pt;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	height:44%;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=5);
+	float:left;
+	height:220px;
+}
+	
+.canvas{height:110px;width: 120px;background-color: #44a2db;z-index:999;position:relative;top:5px;}
+.thumbs{height:100px;width: 110px;position:relative;left:5px;float:left;top:5px;}
+.descricaoAnimal{width:100%;height:50px;overflow:x;position:relative;top:5px;top:10px;background-color:#fff;padding:5px;font-family:'Josefin Slab';font-size:13px;}
+
+.linksBuscaRapida{padding-top:10px;}
+
+#mainSection1{position:absolute;z-index:999; width:90%; top:20%; height:100%;left:5%;}
+
+#bg_img_section1 {
+	background: transparent url("/images/animais_bg/BoyAndBulldog.jpg") repeat scroll 0 0 #FFFFFF;
+	width: 100%;
+	height: 100%;
+	opacity:0.5;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=5);
+	-webkit-filter: blur(5px);
+	top:0px;
+	}
+
+#div_feiras_adocao{position:absolute;top:10%;font-family:corbert;}
+
+#div_feiras_adocao h1{top:10px;
+	font-size:12pt;background-color:#3b76b8;color:#e7eff7;text-align:center;font-family:'Josefin Slab';}
+
+#div_feiras_adocao ul{padding:5px;}
+	
+#div_feiras_adocao li{list-style:none;border-bottom:thick inset #8abadd;}

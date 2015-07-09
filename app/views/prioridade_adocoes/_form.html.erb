@@ -1,0 +1,21 @@
+<%= form_for(@prioridade_adocao) do |f| %>
+  <% if @prioridade_adocao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prioridade_adocao.errors.count, "error") %> prohibited this prioridade_adocao from being saved:</h2>
+
+      <ul>
+      <% @prioridade_adocao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prioridade_adocao %><br />
+    <%= f.text_field :prioridade_adocao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

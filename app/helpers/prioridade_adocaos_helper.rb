@@ -1,0 +1,2 @@
+module PrioridadeAdocaosHelper
+end

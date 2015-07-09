@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 1
+  nome: MyString
+  descricao: MyText
+  endereco_feira_adocao_id: 1
+  inicio_feira: 2013-11-21 00:25:37
+  fim_feira: 2013-11-21 00:25:37
+
+two:
+  usuario_id: 1
+  nome: MyString
+  descricao: MyText
+  endereco_feira_adocao_id: 1
+  inicio_feira: 2013-11-21 00:25:37
+  fim_feira: 2013-11-21 00:25:37

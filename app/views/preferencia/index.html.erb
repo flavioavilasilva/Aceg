@@ -1,0 +1,39 @@
+<h1>Listing preferencia</h1>
+
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Porte</th>
+    <th>Peso</th>
+    <th>Cor</th>
+    <th>Estado</th>
+    <th>Cidade</th>
+    <th>Tipo doador</th>
+    <th>Prioridade adocao</th>
+    <th>Foto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @preferencia.each do |preferencium| %>
+  <tr>
+    <td><%= preferencium.tipo %></td>
+    <td><%= preferencium.porte %></td>
+    <td><%= preferencium.peso %></td>
+    <td><%= preferencium.cor %></td>
+    <td><%= preferencium.estado %></td>
+    <td><%= preferencium.cidade %></td>
+    <td><%= preferencium.tipo_doador %></td>
+    <td><%= preferencium.prioridade_adocao %></td>
+    <td><%= preferencium.foto %></td>
+    <td><%= link_to 'Show', preferencium %></td>
+    <td><%= link_to 'Edit', edit_preferencium_path(preferencium) %></td>
+    <td><%= link_to 'Destroy', preferencium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Preferencium', new_preferencium_path %>

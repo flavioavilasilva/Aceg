@@ -1,0 +1,12 @@
+<nav id="menu">
+	<div id="buscaRapida">
+		<div class="abasTitulo"><h1>Busca Rápida</h1></div>
+				<div class="linksBuscaRapida"><%= link_to "Adoção (" + Animal.count_animais_to_adocao.to_s + ")",animais_path(:with_finalidade=>{:status_animal_id=>'1'}), :controller=>"animals", :action=>"index" %>
+				</div>
+				<div class="linksBuscaRapida"><%= link_to "Achados (" + Animal.count_animais_achados.to_s + ")",animais_path(:with_finalidade=>{:status_animal_id=>'5'}), :controller=>"animals", :action=>"index" %>
+				</div>
+				<div class="linksBuscaRapida"><%= link_to "Perdidos (" + Animal.count_animais_perdidos.to_s + ")",animais_path(:with_finalidade=>{:status_animal_id=>'4'}), :controller=>"animals", :action=>"index" %>
+				</div>
+		</ul>
+	</div>
+</nav>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Doador animal:</b>
+  <%= @adocao_animal.doador_animal_id %>
+</p>
+
+<p>
+  <b>Adotando animal:</b>
+  <%= @adocao_animal.adotando_animal_id %>
+</p>
+
+<p>
+  <b>Animal:</b>
+  <%= @adocao_animal.animal_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_adocao_animal_path(@adocao_animal) %> |
+<%= link_to 'Back', adocao_animais_path %>

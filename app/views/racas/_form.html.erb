@@ -1,0 +1,28 @@
+<%= form_for(@raca) do |f| %>
+  <% if @raca.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@raca.errors.count, "error") %> prohibited this raca from being saved:</h2>
+
+      <ul>
+      <% @raca.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :raca %><br />
+    <%= f.text_field :raca %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :tipo_animal_id %><br />
+    <%= f.collection_select(:tipo_animal_id, TipoAnimal.order(:tipo_animal),
+                                    :id, :tipo_animal, {:prompt => true}) %>
+  </div>
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

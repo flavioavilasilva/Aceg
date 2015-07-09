@@ -1,0 +1,2 @@
+module DoadorAnimalsHelper
+end

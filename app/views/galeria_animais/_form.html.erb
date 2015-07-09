@@ -1,0 +1,32 @@
+<%= form_for @galeria_animal[0], html: {multipart: true} do |f| %>
+  <% if @galeria_animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@galeria_animal.errors.count, "error") %> prohibited this galeria_animal from being saved:</h2>
+
+      <ul>
+      <% @galeria_animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<% f.each do|p| %>
+  <div class="field">
+    <%= p.label :animal_id %><br />
+    <%= p.number_field :animal_id %>
+  </div>
+  <div class="field">
+    <%= p.label :descricao %><br />
+    <%= p.text_field :descricao %>
+  </div>
+  
+  <%= p.file_field :photo %>
+  
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

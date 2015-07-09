@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Adocao animal:</b>
+  <%= @cancelamento_adocao.adocao_animal_id %>
+</p>
+
+<p>
+  <b>Doador animal:</b>
+  <%= @cancelamento_adocao.doador_animal_id %>
+</p>
+
+<p>
+  <b>Motivo cancelamento:</b>
+  <%= @cancelamento_adocao.motivo_cancelamento_id %>
+</p>
+
+<p>
+  <b>Motivo cancelamento:</b>
+  <%= @cancelamento_adocao.motivo_cancelamento %>
+</p>
+
+
+<%= link_to 'Edit', edit_cancelamento_adocao_path(@cancelamento_adocao) %> |
+<%= link_to 'Back', cancelamento_adocoes_path %>

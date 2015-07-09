@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @adotando_animal.usuario_id %>
+</p>
+
+<p>
+  <b>Status adotando:</b>
+  <%= @adotando_animal.status_adotando_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_adotando_animal_path(@adotando_animal) %> |
+<%= link_to 'Back', adotando_animais_path %>

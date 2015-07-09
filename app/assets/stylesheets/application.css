@@ -1,0 +1,99 @@
+
+/*
+
+#container{overflow-x: scroll}
+
+
+
+
+footer{
+	background:rgba(68,162,219,0.9);
+  	bottom: 0;
+  	box-shadow: 0 0px 2px #111111;
+  	height: 45px;
+  	left: 0;
+  	position: relative;
+  	width: 100%;
+  	z-index: 100000;
+	color:#fff;
+	text-align:center;
+	font-family:'Terminal Dosis';
+}
+
+
+h3{font-family:'Petit Formal Script';font-size:16px;}
+	
+a{text-decoration:none;font-weight:bold;}
+*{margin: 0; padding: 0;}
+
+.abasTitulo{background-color:#44a2db;text-align: 
+	left;width:100%;color:#fff;height:2%;padding:10;font-size:8pt;}
+	
+/* Menu */
+
+/*
+#menu
+{
+	list-style:none; 
+	border:0px solid #c0c0c0;
+	border-right:1px solid #c0c0c0; 
+	float:left;
+	font-family:corbert;
+	font-size:14px;
+	font-weight:bold;
+	height:500px;
+}
+
+#menu li{
+	position:relative;
+	font-family:corbert;
+	font-size:14px;
+	font-weight:bold;
+}
+
+#menu li a{color:#000; text-decoration:none; padding:5px 10px; display:block;}
+
+#menu li a:hover
+{
+	background:#44a2db;
+	color:#fff;
+	text-shadow:0px 0px 5px #fff;
+}
+
+#menu_esquerda{position:relative;top:15px;padding:5px 10px;width:10%;float:left;height:835px}
+
+
+/*#buscaRapida{position:relative;top:15px;padding:5px 10px;}*/
+/* Fim bloco menu */
+
+/*-------------------------
+	General Styles
+
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	color:#54a6de;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+section, footer, nav{
+	display: block;
+}
+
+--------------------------*/
+
+ a:link.linkDetalhe{color:#8abadd;padding:2px;font-family: 'Josefin Slab';font-size:12px;font-weight:bold;}
+ a:hover.linkDetalhe{color:red;}
+ a:visited.linkDetalhe{color:#8abadd;font-weight:bold;}
+
+body{padding-top:5%;background-color:#fff;overflow-y: scroll;}
+
+/* Topo */
+.topo{width:100%;}
+/* Fim bloco topo */
+
+

@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @animal.nome %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @animal.tipo_animal.tipo_animal %>
+</p>
+
+<p>
+  <b>Porte:</b>
+  <%= @animal.tipo_animal.raca.porte_animal.porte_animal %>
+</p>
+
+<p>
+  <b>Raça:</b>
+  <%= @animal.tipo_animal.raca.raca%>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @animal.estado.estado %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @animal.cidade.cidade %>
+</p>
+
+<p>
+  <b>Rua:</b>
+  <%= @animal.rua %>
+</p>
+
+<p>
+  <b>Numero rua:</b>
+  <%= @animal.numero_rua %>
+</p>
+
+<p>
+  <b>Prioridade adocao:</b>
+  <%= @animal.prioridade_adocao.prioridade_adocao %>
+</p>
+
+<p>
+  <b>Prioridade adocao:</b>
+  <%= @animal.descricao_animal %>
+</p>
+
+<p>
+  <b>Foto:</b>
+    <%= image_tag @animal.foto.url(:thumb) %>
+</p>
+
+<td><%= link_to 'Adotar',{:controller=>"adocao_animais", :action=> "new",:doador_animal_id=>@animal.doador_animal_id,    :animal_id=>@animal.id,:confirmacao_adotando=>0,:confirmacao_doador=>0} %></td>
+
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animais_path %>

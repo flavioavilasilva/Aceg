@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo: 1
+  porte: 1
+  peso: 1.5
+  cor: MyString
+  estado: 1
+  cidade: 1
+  tipo_doador: 1
+  prioridade_adocao: 1
+  foto: 
+
+two:
+  tipo: 1
+  porte: 1
+  peso: 1.5
+  cor: MyString
+  estado: 1
+  cidade: 1
+  tipo_doador: 1
+  prioridade_adocao: 1
+  foto: 

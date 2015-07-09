@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @oferta_voluntariado.titulo %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @oferta_voluntariado.descricao %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @oferta_voluntariado.usuario_id %>
+</p>
+
+<p>
+  <b>Vigencia oferta:</b>
+  <%= @oferta_voluntariado.vigencia_oferta_id %>
+</p>
+
+<%= link_to 'Candidatar-se',{:controller=>"oferta_voluntariado_candidatos", :action=> "new", :oferta_voluntariado=>{:id=>@oferta_voluntariado.id}} %>
+
+<%= link_to 'Edit', edit_oferta_voluntariado_path(@oferta_voluntariado) %> |
+<%= link_to 'Back', oferta_voluntariado_index_path %>

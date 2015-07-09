@@ -1,0 +1,2 @@
+module MinhasAdocoesHelper
+end

@@ -1,0 +1,23 @@
+<h1>Listing porte_animais</h1>
+
+<table>
+  <tr>
+    <th>Porte animal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @porte_animais.each do |porte_animal| %>
+  <tr>
+    <td><%= porte_animal.porte_animal %></td>
+    <td><%= link_to 'Show', porte_animal %></td>
+    <td><%= link_to 'Edit', edit_porte_animal_path(porte_animal) %></td>
+    <td><%= link_to 'Destroy', porte_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Porte animal', new_porte_animal_path %>

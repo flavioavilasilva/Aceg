@@ -1,0 +1,2 @@
+module StatusConfirmacaoDoadorsHelper
+end

@@ -1,0 +1,29 @@
+<%= form_for(@adocao_confirmacao_chafe) do |f| %>
+  <% if @adocao_confirmacao_chafe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@adocao_confirmacao_chafe.errors.count, "error") %> prohibited this adocao_confirmacao_chafe from being saved:</h2>
+
+      <ul>
+      <% @adocao_confirmacao_chafe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :dias_validade %><br />
+    <%= f.number_field :dias_validade %>
+  </div>
+  <div class="field">
+    <%= f.label :chave_valida %><br />
+    <%= f.text_field :chave_valida %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

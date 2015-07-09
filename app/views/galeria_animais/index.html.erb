@@ -1,0 +1,25 @@
+<h1>Listing galeria_animais</h1>
+
+<table>
+  <tr>
+    <th>Animal</th>
+    <th>Descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @galeria_animais.each do |galeria_animal| %>
+  <tr>
+    <td><%= galeria_animal.animal_id %></td>
+    <td><%= galeria_animal.descricao %></td>
+    <td><%= link_to 'Show', galeria_animal %></td>
+    <td><%= link_to 'Edit', edit_galeria_animal_path(galeria_animal) %></td>
+    <td><%= link_to 'Destroy', galeria_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Galeria animal', new_galeria_animal_path %>

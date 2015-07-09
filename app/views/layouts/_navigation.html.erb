@@ -1,0 +1,63 @@
+<div id="social-bar">
+	<ul id="ul-social">
+		<li><img src="/images/fb_icon.png" width="11" height="24" alt="Fb Icon"> </li>
+		<li><img src="/images/twitter_icon.png" width="11" height="24" alt="Tw Icon"> </li>
+		<li><img src="/images/g_plus_icon.png" width="11" height="24" alt="g Icon"> </li>
+		<li><img src="/images/you_tube_icon.png" width="11" height="24" alt="you Icon"> </li>
+	</ul>
+	<hr id="hr-social-user_info">
+</div>
+
+
+
+<div id="ul-user-info">
+	
+<% if usuario_signed_in? %>
+
+<ul>
+
+<li>Bem vindo <%= current_usuario.perfil.nome %> !</li>
+
+<li class="listMenu"><%= link_to('Logout', destroy_usuario_session_path, :method=>'delete') %></li>
+
+<% else %>
+
+<li class="listMenu"><%= link_to('Login', new_usuario_session_path) %></li>
+
+<% end %>
+
+<% if usuario_signed_in? %>
+
+<li class="listMenu"><%= link_to('Editar conta', edit_usuario_registration_path) %></li>
+
+<% else %>
+
+<li class="listMenu"><%= link_to('Cadastrar', new_usuario_registration_path)  %></li>
+
+</ul>
+
+<% end %>
+
+</div>
+
+<style>
+
+#hr-social-user_info{
+		position:relative;
+		top:10px;
+		border:1px solid #8abadd;
+		
+	}
+
+#ul-social{position:relative;top:5px;}
+	
+#ul-social li{list-style:none;float:left;padding-left:2px;}
+
+#ul-user-info {position:relative;top:10px;}
+
+.listMenu{list-style:none;font-family:'Lato','Arial','sans-serif';font-size:14px;color:#0a131d;}
+
+.listMenu a{color:#ccc;text-decoration:none;font-size:12}
+
+</style
+

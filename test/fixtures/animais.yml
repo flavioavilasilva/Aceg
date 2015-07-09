@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  tipo_animal_id: 1
+  idade_id: 1
+  genero_id: 1
+  porte_animal_id: 1
+  peso: 1.5
+  cor_id: 1
+  descricao_animal: MyText
+  estado_id: 1
+  cidade_id: 1
+  rua: MyString
+  numero_rua: MyString
+  status_animal_id: 1
+  prioridade_adocao_id: 1
+  doador_animal_id: 1
+
+two:
+  nome: MyString
+  tipo_animal_id: 1
+  idade_id: 1
+  genero_id: 1
+  porte_animal_id: 1
+  peso: 1.5
+  cor_id: 1
+  descricao_animal: MyText
+  estado_id: 1
+  cidade_id: 1
+  rua: MyString
+  numero_rua: MyString
+  status_animal_id: 1
+  prioridade_adocao_id: 1
+  doador_animal_id: 1

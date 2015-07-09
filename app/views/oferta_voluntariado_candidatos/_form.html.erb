@@ -1,0 +1,35 @@
+<%= form_for(@oferta_voluntariado_candidato) do |f| %>
+  <% if @oferta_voluntariado_candidato.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@oferta_voluntariado_candidato.errors.count, "error") %> prohibited this oferta_voluntariado from being saved:</h2>
+
+      <ul>
+      <% @oferta_voluntariado_candidato.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+  <div class="field">
+		<% if !current_usuario.blank? %>
+		<%= f.hidden_field :usuario_id, :value=>current_usuario.id %>
+		<% end %>
+  </div>
+
+  <div class="field">
+    <%= @oferta_volunariado.titulo %> <br />
+    <%= f.hidden_field :oferta_voluntariado_id, :value=> @oferta_volunariado.id %>
+  </div>
+	
+  <div class="field">
+    <%= @oferta_volunariado.descricao %> <br />
+  </div>
+	
+  <div class="actions">
+    <%= f.submit :value=>'Candidatar-se'%>
+  </div>
+	
+<% end %>
+
+

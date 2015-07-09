@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @doador_animal.usuario_id %>
+</p>
+
+<p>
+  <b>Status doador:</b>
+  <%= @doador_animal.status_doador_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_doador_animal_path(@doador_animal) %> |
+<%= link_to 'Back', doador_animais_path %>

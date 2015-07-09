@@ -1,0 +1,23 @@
+
+<!DOCTYPE HTML>
+<div class="topo" style="position: relative;top:100px;">
+	
+<div id="logo">
+	<%= image_tag "images/logoACEG.png", 
+	:width => 263,
+	:height =>104,
+	:alt => "Aceg",
+	:title=>"Aceg"
+	%>
+</div>
+	
+<div id="user_nav">
+<ul>
+<%= render "layouts/navigation" %>
+</ul>
+<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+</div>
+</div>
+</div>

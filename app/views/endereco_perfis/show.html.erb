@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rua:</b>
+  <%= @endereco_perfil.rua %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @endereco_perfil.numero %>
+</p>
+
+<p>
+  <b>Cep:</b>
+  <%= @endereco_perfil.cep %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @endereco_perfil.estado_id %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @endereco_perfil.cidade_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_endereco_perfil_path(@endereco_perfil) %> |
+<%= link_to 'Back', endereco_perfis_path %>

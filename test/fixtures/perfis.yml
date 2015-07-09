@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  endereco_perfil_id: 
+  data_nascimento: 2013-10-12 18:16:12
+  cpf: MyString
+
+two:
+  descricao: MyString
+  endereco_perfil_id: 
+  data_nascimento: 2013-10-12 18:16:12
+  cpf: MyString

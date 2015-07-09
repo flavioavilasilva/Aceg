@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  doador_animal_id: 1
+  adotando_animal_id: 1
+  animal_id: 1
+
+two:
+  doador_animal_id: 1
+  adotando_animal_id: 1
+  animal_id: 1

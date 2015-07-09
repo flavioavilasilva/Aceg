@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Animal:</b>
+  <%= @galeria_animal.animal_id %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @galeria_animal.descricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_galeria_animal_path(@galeria_animal) %> |
+<%= link_to 'Back', galeria_animais_path %>

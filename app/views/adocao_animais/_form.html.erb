@@ -1,0 +1,33 @@
+<%= form_for @adocao_animal, html: {multipart: true} do |f| %>
+  <% if @adocao_animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@adocao_animal.errors.count, "error") %> prohibited this adocao_animal from being saved:</h2>
+
+      <ul>
+      <% @adocao_animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+		Doador:
+		<%= f.label @adocao_animal.doador_animal.perfil.nome %><br />
+    	<%= f.hidden_field :doador_animal_id, :value=>@adocao_animal.doador_animal.id %>
+		
+  </div>
+  <div class="field">
+		Adotante:
+		<%= f.label  @adocao_animal.adotando_animal.perfil.nome %><br />
+		<%= f.hidden_field :adotando_animal_id, :value=>@adocao_animal.adotando_animal.id %>
+  </div>
+  <div class="field">
+    Nome:
+		<%= f.label @adocao_animal.animal.nome %><br />
+		<%= f.hidden_field :animal_id, :value=>@adocao_animal.animal_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value=>"Confirmar adoção"%>
+  </div>
+<% end %>

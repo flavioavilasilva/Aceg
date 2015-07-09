@@ -1,0 +1,9 @@
+one:
+  usuario_id: 1
+  provider: MyString
+  uid: MyString
+
+two:
+  usuario_id: 1
+  provider: MyString
+  uid: MyString

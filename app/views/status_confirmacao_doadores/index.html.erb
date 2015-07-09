@@ -1,0 +1,23 @@
+<h1>Listing status_confirmacao_doadores</h1>
+
+<table>
+  <tr>
+    <th>Status confirmacao doador</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_confirmacao_doadores.each do |status_confirmacao_doador| %>
+  <tr>
+    <td><%= status_confirmacao_doador.status_confirmacao_doador %></td>
+    <td><%= link_to 'Show', status_confirmacao_doador %></td>
+    <td><%= link_to 'Edit', edit_status_confirmacao_doador_path(status_confirmacao_doador) %></td>
+    <td><%= link_to 'Destroy', status_confirmacao_doador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status confirmacao doador', new_status_confirmacao_doador_path %>

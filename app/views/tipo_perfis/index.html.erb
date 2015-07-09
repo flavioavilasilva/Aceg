@@ -1,0 +1,23 @@
+<h1>Listing tipo_perfis</h1>
+
+<table>
+  <tr>
+    <th>Tipo perfil</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_perfis.each do |tipo_perfil| %>
+  <tr>
+    <td><%= tipo_perfil.tipo_perfil %></td>
+    <td><%= link_to 'Show', tipo_perfil %></td>
+    <td><%= link_to 'Edit', edit_tipo_perfil_path(tipo_perfil) %></td>
+    <td><%= link_to 'Destroy', tipo_perfil, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo perfil', new_tipo_perfil_path %>

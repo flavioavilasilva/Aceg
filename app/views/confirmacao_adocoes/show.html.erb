@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Adocao animal:</b>
+  <%= @confirmacao_adocao.adocao_animal.animal.nome %>
+</p>
+
+<p>
+  <b>Confirmacao doador:</b>
+  <% if @confirmacao_adocao.status_confirmacao_doador.blank? %>
+  	"Aguardando resposta doador"
+  <%else%>
+  	<%= @confirmacao_adocao.status_confirmacao_doador.status_confirmacao_doador %>
+  <%end%>
+</p>
+
+<p>
+  <b>Confirmacao adotando:</b>
+  <%if @confirmacao_adocao.status_confirmacao_adotando.blank? %>
+  	"Aguardando resposta adotando"
+  <% else %>
+  	<%= @confirmacao_adocao.status_confirmacao_adotando.status_confirmacao_adotando %>
+  <%end%>
+</p>
+
+
+<%= link_to 'Edit', edit_confirmacao_adocao_path(@confirmacao_adocao) %> |
+<%= link_to 'Back', confirmacao_adocoes_path %>

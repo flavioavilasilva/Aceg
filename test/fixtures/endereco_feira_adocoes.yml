@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cep: MyString
+  estado_id: 1
+  cidade_id: 1
+  numero: MyString
+  feira_adocao_id: 1
+  rua: MyString
+
+two:
+  cep: MyString
+  estado_id: 1
+  cidade_id: 1
+  numero: MyString
+  feira_adocao_id: 1
+  rua: MyString

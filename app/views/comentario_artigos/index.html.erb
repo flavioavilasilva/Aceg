@@ -1,0 +1,27 @@
+<h1>Listing comentario_artigos</h1>
+
+<table>
+  <tr>
+    <th>Autor</th>
+    <th>Conteudo</th>
+    <th>Artigo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comentario_artigos.each do |comentario_artigo| %>
+  <tr>
+    <td><%= comentario_artigo.autor %></td>
+    <td><%= comentario_artigo.conteudo %></td>
+    <td><%= comentario_artigo.artigo %></td>
+    <td><%= link_to 'Show', comentario_artigo %></td>
+    <td><%= link_to 'Edit', edit_comentario_artigo_path(comentario_artigo) %></td>
+    <td><%= link_to 'Destroy', comentario_artigo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Comentario artigo', new_comentario_artigo_path %>

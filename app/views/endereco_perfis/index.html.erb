@@ -1,0 +1,31 @@
+<h1>Listing endereco_perfis</h1>
+
+<table>
+  <tr>
+    <th>Rua</th>
+    <th>Numero</th>
+    <th>Cep</th>
+    <th>Estado</th>
+    <th>Cidade</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @endereco_perfis.each do |endereco_perfil| %>
+  <tr>
+    <td><%= endereco_perfil.rua %></td>
+    <td><%= endereco_perfil.numero %></td>
+    <td><%= endereco_perfil.cep %></td>
+    <td><%= endereco_perfil.estado_id %></td>
+    <td><%= endereco_perfil.cidade_id %></td>
+    <td><%= link_to 'Show', endereco_perfil %></td>
+    <td><%= link_to 'Edit', edit_endereco_perfil_path(endereco_perfil) %></td>
+    <td><%= link_to 'Destroy', endereco_perfil, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Endereco perfil', new_endereco_perfil_path %>

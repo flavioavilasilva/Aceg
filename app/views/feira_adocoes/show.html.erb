@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @feira_adocao.usuario_id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @feira_adocao.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @feira_adocao.descricao %>
+</p>
+
+<p>
+  <b>Inicio feira:</b>
+  <%= @feira_adocao.inicio_feira %>
+</p>
+
+<p>
+  <b>Fim feira:</b>
+  <%= @feira_adocao.fim_feira %>
+</p>
+
+<p>
+  <b>Endereco feira adocao:</b>
+  <%= @feira_adocao.endereco_feira_adocao.first.rua %>,
+	<%= @feira_adocao.endereco_feira_adocao.first.numero %>,
+	<%= @feira_adocao.endereco_feira_adocao.first.cep %>,
+	<%= @feira_adocao.endereco_feira_adocao.first.estado.sigla %> -
+	<%= @feira_adocao.endereco_feira_adocao.first.cidade.cidade %>
+</p>
+
+
+<%= link_to 'Edit', edit_feira_adocao_path(@feira_adocao) %> |
+<%= link_to 'Back', feira_adocoes_path %>

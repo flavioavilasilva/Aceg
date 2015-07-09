@@ -1,0 +1,37 @@
+<%= form_for(@endereco_perfil) do |f| %>
+  <% if @endereco_perfil.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@endereco_perfil.errors.count, "error") %> prohibited this endereco_perfil from being saved:</h2>
+
+      <ul>
+      <% @endereco_perfil.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rua %><br />
+    <%= f.text_field :rua %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :cep %><br />
+    <%= f.text_field :cep %>
+  </div>
+  <div class="field">
+    <%= f.label :estado_id %><br />
+    <%= f.number_field :estado_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cidade_id %><br />
+    <%= f.number_field :cidade_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titulo: MyString
+  descricao: MyText
+  usuario_id: 1
+  vigencia_oferta: 1
+  status_oferta_voluntariado: 1
+
+two:
+  titulo: MyString
+  descricao: MyText
+  usuario_id: 1
+  vigencia_oferta: 1
+  status_oferta_voluntariado: 1

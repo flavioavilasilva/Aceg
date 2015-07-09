@@ -1,0 +1,24 @@
+<h1>Minhas adoções</h1>
+
+<table>
+  <tr>
+    <th>Codigo adoção</th>
+    <th>Doador</th>
+    <th>Nome animal</th>
+    <th>Tipo animal</th>
+    <th>Raça</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @minhas_adocoes.each do |minhas_adocoes| %>
+  <tr>
+    <td><%= minhas_adocoes.id %></td>
+    <td><%= minhas_adocoes.adotando_animal.perfil.nome %></td>
+    <td><%= minhas_adocoes.animal.nome %></td>
+    <td><%= minhas_adocoes.animal.tipo_animal.tipo_animal %></td>
+		<td><%= minhas_adocoes.animal.tipo_animal.raca.raca %></td>
+    <td><%= link_to 'Show', minhas_doacoes %></td>
+  </tr>
+<% end %>
+</table>

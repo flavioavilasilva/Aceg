@@ -1,0 +1,45 @@
+<p class="notice"><%= notice %></p>
+ 
+<p>
+  <b>Titulo:</b>
+  <%= @artigo.titulo %>
+</p>
+ 
+<p>
+  <b>Conteudo:</b>
+  <%= @artigo.conteudo %>
+</p>
+ 
+<h2>Comentarios</h2>
+<% @artigo.comentarios.each do |comentario| %>
+  <p>
+    <b>Autor:</b>
+    <%= comentario.autor %>
+  </p>
+ 
+  <p>
+    <b>Comentario:</b>
+    <%= comentario.conteudo %>
+  </p>
+<hr />
+<% end %>
+ 
+<h2>Adicione um comentario:</h2>
+<%= form_for([@artigo, @artigo.comentarios.build]) do |f| %>
+  <div class="field">
+    <%= f.label :autor %><br />
+    <%= f.text_field :autor %>
+  </div>
+  <div class="field">
+    <%= f.label :conteudo %><br />
+    <%= f.text_area :conteudo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+<br />
+ 
+<%= link_to 'Edit Artigo', edit_artigo_path(@artigo) %> |
+<%= link_to 'Back to Artigos', artigos_path %>

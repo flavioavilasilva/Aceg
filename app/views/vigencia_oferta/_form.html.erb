@@ -1,0 +1,21 @@
+<%= form_for(@vigencia_ofertum) do |f| %>
+  <% if @vigencia_ofertum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vigencia_ofertum.errors.count, "error") %> prohibited this vigencia_ofertum from being saved:</h2>
+
+      <ul>
+      <% @vigencia_ofertum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vigencia %><br />
+    <%= f.number_field :vigencia %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for(@status_confirmacao_doador) do |f| %>
+  <% if @status_confirmacao_doador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@status_confirmacao_doador.errors.count, "error") %> prohibited this status_confirmacao_doador from being saved:</h2>
+
+      <ul>
+      <% @status_confirmacao_doador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status_confirmacao_doador %><br />
+    <%= f.text_field :status_confirmacao_doador %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

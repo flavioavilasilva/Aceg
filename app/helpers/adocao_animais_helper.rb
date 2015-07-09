@@ -1,0 +1,2 @@
+module AdocaoAnimaisHelper
+end

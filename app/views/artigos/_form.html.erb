@@ -1,0 +1,44 @@
+<%= form_for @artigo, html: {multipart: true} do |f| %>
+  <% if @artigo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artigo.errors.count, "error") %> prohibited this artigo from being saved:</h2>
+
+      <ul>
+      <% @artigo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :autor %><br />
+    <%= f.text_field :autor %>
+  </div>
+  <div class="field">
+    <%= f.label :fonte %><br />
+    <%= f.text_field :fonte %>
+  </div>
+  <div class="field">
+    <%= f.label :data_publicacao %><br />
+    <%= f.datetime_select :data_publicacao %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :artigo %><br />
+    <%= f.text_area :artigo %>
+  </div>
+  <div class="field">
+    <%= f.label :ativo %><br />
+    <%= f.check_box :ativo %>
+  </div>
+  
+  <%= f.file_field :foto %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

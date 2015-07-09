@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @perfil.descricao %>
+</p>
+
+<p>
+  <b>Endereco perfil:</b>
+  <%= @perfil.endereco_perfil_id %>
+</p>
+
+<p>
+  <b>Data nascimento:</b>
+  <%= @perfil.data_nascimento %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @perfil.cpf %>
+</p>
+
+
+<%= link_to 'Edit', edit_perfil_path(@perfil) %> |
+<%= link_to 'Back', perfis_path %>

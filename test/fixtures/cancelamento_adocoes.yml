@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  adocao_animal_id: 1
+  doador_animal_id: 
+  motivo_cancelamento_id: 1
+  motivo_cancelamento: MyText
+
+two:
+  adocao_animal_id: 1
+  doador_animal_id: 
+  motivo_cancelamento_id: 1
+  motivo_cancelamento: MyText

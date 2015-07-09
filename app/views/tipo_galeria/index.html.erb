@@ -1,0 +1,23 @@
+<h1>Listing tipo_galeria</h1>
+
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_galeria.each do |tipo_galerium| %>
+  <tr>
+    <td><%= tipo_galerium.tipo %></td>
+    <td><%= link_to 'Show', tipo_galerium %></td>
+    <td><%= link_to 'Edit', edit_tipo_galerium_path(tipo_galerium) %></td>
+    <td><%= link_to 'Destroy', tipo_galerium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo galerium', new_tipo_galerium_path %>

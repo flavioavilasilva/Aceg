@@ -1,0 +1,159 @@
+<%= javascript_include_tag "geo_location_to_form.js" %>
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+  
+  <br />
+  <hr>
+  
+  <%= f.fields_for :perfil do |perfil_fields| %>
+	
+		<div>Foto:<br /><%= perfil_fields.file_field :foto %></div>
+  
+  	<div>Nome:<br /> <%= perfil_fields.text_field :nome %></div>
+  
+  	<div>Descrição:<br /> <%= perfil_fields.text_area :descricao, :rows => "4" %></div>
+  	
+  	<div>Data Nascimento:<br /> <%= perfil_fields.text_field :data_nascimento %></div>
+  	
+  	<div>CPF:<br /> <%= perfil_fields.text_field :cpf %></div>
+  	
+  	<div>Telefone:<br /> <%= perfil_fields.text_field :telefone %></div>
+  	
+  	<br />
+  	<hr>
+  	
+  	<%= perfil_fields.fields_for :endereco_perfil do |endereco_perfil_fields| %>
+	
+  	<div>CEP:<br /> <%= endereco_perfil_fields.text_field :cep, :id=>'usuario_cep', :onblur=>"jsBuscaCep('usuario_cep', 		'usuario_perfil_attributes_endereco_perfil_attributes_estado_id', 'usuario_perfil_attributes_endereco_perfil_attributes_cidade_id', 		'usuario_rua')" %></div>
+  	<div>Rua:<br /> <%= endereco_perfil_fields.text_field :rua, :id=>'usuario_rua' %></div>
+  	<div>Número:<br /> <%= endereco_perfil_fields.text_field :numero, :id=>'usuario_numero_rua' %></div>
+  	<div>Estado:<br /> <%= endereco_perfil_fields.collection_select( :estado_id, [], :estado, :include_blank => 'Selecione uma cidade')  %></div>
+  	<div>Cidade<br /> <%= endereco_perfil_fields.collection_select(:cidade_id, [], :cidade, :include_blank => 'Selecione uma cidade' )  %></div>
+  		
+  	<% end %>
+  	
+
+  <% end %>
+  
+  
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+
+<script type="text/javascript">
+
+	getLocation();
+
+ 	jQuery(window).load(function($){
+ 		
+ 		cep = document.getElementById( "usuario_cep" ).value;
+
+ 		var intervalo = setInterval(function() {
+ 			
+ 			//Verifica se cep foi preenchido
+	    	if (cep != '')
+	    	{
+					
+						jsBuscaCep('usuario_cep', 'usuario_perfil_attributes_endereco_perfil_attributes_estado_id', 
+						'usuario_perfil_attributes_endereco_perfil_attributes_cidade_id', 'usuario_rua');
+						limpaIntervalo(intervalo);
+						
+					}
+					
+		  }, 2000);
+		  
+	});
+
+  function limpaIntervalo(intervalo)
+  {
+  	clearInterval(intervalo);
+	intervalo = 0;
+  }
+  
+  function getLocation()
+  {
+
+  if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(showPosition,showError);
+	}
+  else{alert("Geolocation is not supported by this browser.");}
+  }
+  
+  
+  function showPosition(position)
+  {
+  	
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  
+	var lat = parseFloat(position.coords.latitude);
+	var lng = parseFloat(position.coords.longitude);
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'latLng': latlng}, function(dataLocation, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			
+			var elementoCep = document.getElementById( "usuario_cep" );
+			dadosLocalizacao(dataLocation, elementoCep)
+		
+			/*console.log('cep '+ dataLocation[0].address_components[6].long_name)
+			console.log('Estado '+ dataLocation[0].address_components[4].long_name)
+			console.log('Cidade '+ dataLocation[0].address_components[3].long_name)
+			
+			estado=dataLocation[0].address_components[4].long_name;
+			cidade=dataLocation[0].address_components[3].long_name;
+			cep=dataLocation[0].address_components[7].long_name;
+			
+			processaEstadoCidade(estado,cidade,cep);
+			console.log(dataLocation)
+			
+			document.getElementById( "usuario_cep" ).value = cep;
+			console.log( "data location success urlApiGoogle");*/
+		}
+	});
+
+  }
+  
+  function showError(error)
+  {
+  	switch(error.code)
+    {
+    	case error.PERMISSION_DENIED:
+      	alert("é necessário ter acesso a dados de localização, você será redirecionado para informar de forma manual");
+     	 break;
+    	case error.POSITION_UNAVAILABLE:
+      	alert("Location information is unavailable.");
+     	 break;
+    	case error.TIMEOUT:
+      	alert("The request to get user location timed out.");
+      	break;
+    	case error.UNKNOWN_ERROR:
+      	alert("An unknown error occurred.");
+      	break;
+    }
+    
+	 var urlEstadoCidade = "/local_estado_cidade";
+	 console.log(urlEstadoCidade);
+  	
+  	$(window.document.location).attr('href',urlEstadoCidade);		
+  	 
+  }
+	
+</script>

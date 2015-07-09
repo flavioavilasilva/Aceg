@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  adocao_animal_id: 1
+  confirmacao_doador: 
+  confirmacao_adotando: 
+  key: MyString
+
+two:
+  adocao_animal_id: 1
+  confirmacao_doador: 
+  confirmacao_adotando: 
+  key: MyString

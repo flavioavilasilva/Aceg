@@ -1,0 +1,23 @@
+<h1>Listing idades</h1>
+
+<table>
+  <tr>
+    <th>Idade animal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @idades.each do |idade| %>
+  <tr>
+    <td><%= idade.idade_animal %></td>
+    <td><%= link_to 'Show', idade %></td>
+    <td><%= link_to 'Edit', edit_idade_path(idade) %></td>
+    <td><%= link_to 'Destroy', idade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Idade', new_idade_path %>

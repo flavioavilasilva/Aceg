@@ -1,0 +1,130 @@
+<link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+
+<%= javascript_include_tag "geo_location_to_form.js" %>
+<%= form_tag('/local_estado_cidade',:method=>"post") do %>
+	
+<div class="field">
+	Estado:
+	<%= collection_select(:with_estado, :estado_id, Estado.all, :id, :estado, {:prompt => "Selecione"})%>
+</div>
+<div class="field">
+   Cidade:
+   <%= collection_select(:with_cidade,:cidade_id, [], :id, :cidade, :prompt => "Selecione") %>
+</div>
+
+<%= submit_tag("create",:controller=>"local_estado_cidade",:action => "create")%>
+
+<% end %>
+
+<script type="text/javascript">
+
+	getLocation();
+
+	jQuery(window).load(function($){
+	
+		cep=''
+
+		var intervalo = setInterval(function() {
+
+		if(cep!='')
+		{
+			console.log(cep);
+			limpaIntervalo(intervalo);
+			var confirmLocation = confirm('Identificamos sua localização com o cep:'+ cep + '\nGostaria de utilizar sua localização atual 				para navegacão no site?');
+			if (confirmLocation)
+			{
+				var root = "/home";
+				jQuery(window.document.location).attr('href',root);
+			}
+		}
+		
+		},2000);
+
+	});
+	
+	function limpaIntervalo(intervalo)
+	  {
+	  	clearInterval(intervalo);
+			intervalo = 0;
+	  }
+	
+	function getLocation(){
+	  	
+	  if (navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(showPosition,showError);
+		}
+	  else
+		{
+			alert("Geolocation is not supported by this browser.")
+	  	;}
+	  }
+	  
+	  
+	function showPosition(position){
+  	
+	  console.log(position.coords.latitude);
+	  console.log(position.coords.longitude);
+
+		var lat = parseFloat(position.coords.latitude);
+		var lng = parseFloat(position.coords.longitude);
+		var latlng = new google.maps.LatLng(lat, lng);
+		
+		geocoder = new google.maps.Geocoder();
+		geocoder.geocode({'latLng': latlng}, function(dataLocation, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			
+				console.log('cep '+ dataLocation[0].address_components[7].long_name)
+				console.log('Estado '+ dataLocation[0].address_components[4].long_name)
+				console.log('Cidade '+ dataLocation[0].address_components[3].long_name)
+				
+				estado=dataLocation[0].address_components[4].long_name;
+				cidade=dataLocation[0].address_components[3].long_name;
+				cep=dataLocation[0].address_components[7].long_name;
+				
+				processaEstadoCidade(estado,cidade,cep);
+				console.log(dataLocation)
+			}
+		});
+		
+  	}
+  	
+  	function showError(error){
+  		
+  	switch(error.code)
+    {
+    	case error.PERMISSION_DENIED:
+      	alert("é necessário ter acesso a dados de localização, você será redirecionado para informar de forma manual");
+     	 break;
+    	case error.POSITION_UNAVAILABLE:
+      	alert("Location information is unavailable.");
+     	 break;
+    	case error.TIMEOUT:
+      	alert("The request to get user location timed out.");
+      	break;
+    	case error.UNKNOWN_ERROR:
+      	alert("An unknown error occurred.");
+      	break;
+    }	
+  	 
+  }
+  
+
+   $("#with_estado_estado_id").click(function() {
+      getCidadeByEstado("id="+$("#with_estado_estado_id").val());
+    });
+
+  function getCidadeByEstado(id) {
+    $.getJSON("/cidades_by_estado", id, function(j) {
+      var options = '<option value="">Selecione a cidade</option>';
+      console.log(options);
+      $.each(j.cid, function(i, item) {
+        options += '<option value="' + item.id + '">' + item.cidade + '</option>';
+      });
+      $("#with_cidade_cidade_id").html(options);
+    });
+  }
+  
+</script>
+

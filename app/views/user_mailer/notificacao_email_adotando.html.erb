@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Parabéns,<%= @usuario.perfil.nome %>!</h1>
+    <p>
+      Você solicitou a adoção do seguinte animal: 
+    </p>
+	<p>
+		<%= @msg %>
+	</p>
+	<a href=<%= @link_adotando %> target='_blank'>Confirmação adoção</a>
+  </body>
+</html>

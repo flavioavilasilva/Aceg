@@ -1,0 +1,55 @@
+<p>
+  <strong>Title:</strong>
+  <%= @artigo.titulo %>
+</p>
+ 
+<div>
+<p>
+  <strong>Text:</strong>
+  <%= @artigo.artigo %>
+</p>
+  Avaliação : <%= rating_for @artigo, 'artigo' %>
+
+</div>
+
+ 
+<h2>Comments</h2>
+<% @artigo.comentario_artigos.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.autor %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.conteudo %>
+  </p>
+  <p>
+  <%= link_to 'Destroy Comment', [comment.artigo, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+ </p>
+ 
+<% end %>
+
+
+ 
+<h2>Add a comment:</h2>
+<%= form_for([@artigo, @artigo.comentario_artigos.build]) do |f| %>
+  <p>
+    <%= f.label :autor %><br />
+    <%= f.text_field :autor %>
+  </p>
+  <p>
+    <%= f.label :conteudo %><br />
+    <%= f.text_area :conteudo %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Edit Post', edit_artigo_path(@artigo) %> |
+<%= link_to 'Back to Posts', artigos_path %>
+
+

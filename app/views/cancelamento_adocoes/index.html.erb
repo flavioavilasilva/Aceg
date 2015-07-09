@@ -1,0 +1,29 @@
+<h1>Listing cancelamento_adocoes</h1>
+
+<table>
+  <tr>
+    <th>Adocao animal</th>
+    <th>Doador animal</th>
+    <th>Motivo cancelamento</th>
+    <th>Motivo cancelamento</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cancelamento_adocoes.each do |cancelamento_adocao| %>
+  <tr>
+    <td><%= cancelamento_adocao.adocao_animal_id %></td>
+    <td><%= cancelamento_adocao.doador_animal_id %></td>
+    <td><%= cancelamento_adocao.motivo_cancelamento_id %></td>
+    <td><%= cancelamento_adocao.motivo_cancelamento %></td>
+    <td><%= link_to 'Show', cancelamento_adocao %></td>
+    <td><%= link_to 'Edit', edit_cancelamento_adocao_path(cancelamento_adocao) %></td>
+    <td><%= link_to 'Destroy', cancelamento_adocao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cancelamento adocao', new_cancelamento_adocao_path %>

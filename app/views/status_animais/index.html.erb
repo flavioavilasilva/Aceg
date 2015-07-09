@@ -1,0 +1,23 @@
+<h1>Listing status_animais</h1>
+
+<table>
+  <tr>
+    <th>Status animal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_animais.each do |status_animal| %>
+  <tr>
+    <td><%= status_animal.status_animal %></td>
+    <td><%= link_to 'Show', status_animal %></td>
+    <td><%= link_to 'Edit', edit_status_animal_path(status_animal) %></td>
+    <td><%= link_to 'Destroy', status_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status animal', new_status_animal_path %>

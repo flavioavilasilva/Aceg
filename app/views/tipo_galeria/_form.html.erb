@@ -1,0 +1,21 @@
+<%= form_for(@tipo_galerium) do |f| %>
+  <% if @tipo_galerium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_galerium.errors.count, "error") %> prohibited this tipo_galerium from being saved:</h2>
+
+      <ul>
+      <% @tipo_galerium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

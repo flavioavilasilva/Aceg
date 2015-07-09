@@ -1,0 +1,25 @@
+<h1>Listing adotando_animais</h1>
+
+<table>
+  <tr>
+    <th>Usuario</th>
+    <th>Status adotando</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @adotando_animais.each do |adotando_animal| %>
+  <tr>
+    <td><%= adotando_animal.usuario_id %></td>
+    <td><%= adotando_animal.status_adotando_id %></td>
+    <td><%= link_to 'Show', adotando_animal %></td>
+    <td><%= link_to 'Edit', edit_adotando_animal_path(adotando_animal) %></td>
+    <td><%= link_to 'Destroy', adotando_animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Adotando animal', new_adotando_animal_path %>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<%= stylesheet_link_tag "home",media:"all" %>
+<%= stylesheet_link_tag "home_slider_artigos",media:"all" %>
+<%= stylesheet_link_tag "artigos_home",media:"all" %>
+<%= stylesheet_link_tag "polaroid",media:"all" %>
+<%= stylesheet_link_tag "lista_animais_home",media:"all" %>
+<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Terminal+Dosis",media:"all" %>
+
+<link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Buenard' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Raleway+Dots|Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,300' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:700' rel='stylesheet' type='text/css'>
+
+<div style="overflow: hidden;">
+	
+<div class="st-container">
+
+	<input type="radio" name="radio-set" checked="checked" id="st-control-1"/> <a href="#st-panel-1">Adotar</a>
+
+	<input type="radio" name="radio-set" id="st-control-2"/> <a href="#st-panel-2">Artigos</a>
+
+	<input type="radio" name="radio-set" id="st-control-3"/> <a href="#st-panel-3">Ong's</a>
+
+	<input type="radio" name="radio-set" id="st-control-4"/> <a href="#st-panel-4">Sobre nós</a>
+
+	<input type="radio" name="radio-set" id="st-control-5"/> <a href="#st-panel-5">Contato</a>
+
+	<div class="st-scroll">
+		
+		<section class="st-panel" id="st-panel-1">
+
+			<div id="mainSection1">
+				
+				
+				<!-- Porque Adotar -->
+				<div class="float_left_canvas">
+					
+						<h1 class="tituloHome">Ong's</h1>
+					
+						<section class="ac-container">
+							
+							<% if !@ong.blank?%>
+		
+								<% @ong.each do |ong| %>
+								
+						    <div>
+						        <input id="ac-1" name="accordion-1" type="checkbox" />
+										
+						        
+										<label for="ac-1">
+												
+											<div style='float:left'><%= image_tag ong.foto.url(:thumb),:class=>"medium" %></div>
+											<div style='float:left; padding:5px'>
+												<h1><%= ong.nome.capitalize %></h1>
+												<h3>Tel-<%= ong.telefone %></h3>
+												<div id='info_compl'>teste</div>
+											</div>
+										
+										</label>
+						        <article class="ac-small">
+						            <p><%= ong.descricao[0..300]+ "..."%></p>
+												<br>
+												<p><%= ong.endereco_perfil.rua%>, <%= ong.endereco_perfil.numero%></p>
+												<p><%= ong.endereco_perfil.cep%></p>
+						        </article>
+						    </div>
+								
+						    <% end %>
+							
+							<% end %>
+
+						</section>
+					
+
+				</div>
+				
+				<div class="float_left_canvas">
+					
+					<% if !@cachorro_prioridade.blank? %>
+					
+					<div>
+					<div class="animalPrioridade">
+	        
+						<h2><%= @cachorro_prioridade.first.nome.capitalize %></h2>
+	
+						<div class="canvas">
+							<%=link_to (image_tag @cachorro_prioridade.first.foto.url(:thumb),:class=>"thumbs"), @cachorro_prioridade.first, {:title => 									@cachorro_prioridade.first.nome.capitalize} %>
+						</div>
+	
+						<div class="descricaoAnimal">
+	
+							<p><%= @cachorro_prioridade.first.descricao_animal[0..150]+"..." %></p>
+							
+							<%= link_to '+ Detalhes', @cachorro_prioridade.first,{:class=>"linkDetalhe"}%>
+							
+							<!--<%= link_to '+ Detalhes', @cachorro_prioridade.first, :anchor=>"img_animal_priority", :class=>"linkDetalhe" %>-->
+	
+						</div>
+	
+					</div>
+					<% else %>
+					<div class="animalPrioridade">Dados indisponíveis no momento</div>
+					<% end %>
+
+					<% if !@gato_prioridade.blank? %>
+					
+					<div class="animalPrioridade">
+						<h2><%= @gato_prioridade.first.nome.capitalize %></h2>
+		
+						<div class="canvas">
+							<%=link_to (image_tag @gato_prioridade.first.foto.url(:thumb),:class=>"thumbs"), @gato_prioridade.first, {:title => 								@gato_prioridade.first.nome.capitalize} %>
+						</div>
+	
+						<div class="descricaoAnimal">
+							<p><%= @gato_prioridade.first.descricao_animal[0..150]+"..." %></p>
+							<%= link_to '+ Detalhes', @gato_prioridade.first, {:class=>"linkDetalhe"} %>
+						</div>
+	
+						
+	
+					</div>
+					
+					<% else %>
+					<div class="animalPrioridade">Dados indisponíveis no momento</div>
+					<% end %>
+					
+				</div>
+					
+					<div id="listaAnimais">
+						
+						<% if !@animais.blank?%>
+						<ul id="pe-thumbs" class="pe-thumbs">
+				
+							<% @animais.each do |animais| %>
+	
+							<li>
+								<a href="animais/<%= animais.id %>">
+									<%= image_tag animais.foto.url(:thumb),:class=>"medium" %>
+									<div class="pe-description">
+										<h3><%= animais.nome.capitalize%></h3>
+										<p><%= animais.descricao_animal[0..100]+"..."%></p>
+									</div>
+								</a>
+							</li>
+	
+							<% end %>
+						</ul>
+						<% else %>
+						<div>Dados indisponíveis no momento</div>
+						<% end %>
+					
+					</div>
+				
+			</div>
+				
+				<div class="float_left_canvas">
+					
+					<h1 class="tituloHome">Feiras de adoção</h1>
+					
+					<div id='div_feiras_adocao'>
+						
+						<% if !@feiras_adocao.blank?%>
+						<ul>
+				
+							<% @feiras_adocao.each do |feiras_adocao| %>
+	
+							<li>
+									
+								<div>
+									<a href="feira_adocoes/<%= feiras_adocao.id %>"><h2><%= feiras_adocao.nome.capitalize %></h2></a>
+									<p><%= feiras_adocao.descricao[0..100]+ "..." %></p>
+									<p><%= feiras_adocao.inicio_feira %> - <%= feiras_adocao.fim_feira %></p>
+								</div>
+									
+							</li>
+								
+							<% end %>
+							
+						</ul>
+						<% else %>
+						<div>Dados indisponíveis no momento</div>
+						<% end %>
+					</div>
+				</div>
+				
+		</div>
+			
+		</section>
+		
+	  <section class="st-panel" id="st-panel-2">
+			
+			<div id="bg_img_section1"><img class="bg_img_section1" src='/images/animais_bg/animais_cats.jpg'></div>
+			
+	    <div id="div_artigos" style="position:absolute;z-index:999; width:99%; top:3%; height:100%;">
+				<div class="main">
+					<% if !@artigo.blank?%>
+							<div class="row cf">
+								<% @artigo.each do |artigo| %>
+								<div class="mb-gamma col span_12_vpalpha span_3_vpgamma span_3_ie8">
+									<div class="row cf">
+										<div class="col span_3_vpalpha span_12_vpgamma span_12_ie8">
+											<%= image_tag artigo.foto.url(:thumb),:class=>"thumbs" %>
+										</div>
+										<div class="col span_9_vpalpha span_7_vpbeta span_12_vpgamma col-12-ie8">
+											<h1><%=artigo.titulo.capitalize %></h1>
+										</div>
+										<div class="col span_9_vpalpha span_2_vpbeta span_12_vpgamma col-12-ie8">
+											<small class="d-iblock mb-alpha"><sub><%=artigo.data_publicacao%></sub></small>
+										</div>
+										<div class="col span_12_vpalpha span_9_vpbeta span_12_vpgamma col-12-ie8">
+											<p class="mb-alpha"><%=artigo.artigo[0..250]+"..." %></p>
+										</div>
+									</div>
+							
+									<%= rating_for artigo, 'artigo'%>
+							
+								</div>
+								<% end %>
+							</div><!-- .row -->
+							<% else %>
+							<div>Dados indisponíveis no momento</div>
+							<% end %>
+				</div><!-- .main -->
+			</div>
+		</section>
+		
+	  <section class="st-panel" id="st-panel-3">
+			
+			<div id="bg_img_section1"><img class="bg_img_section1" src='/images/animais_bg/animais_cat.jpg'></div>
+			
+	    <div id="div_ongs" style="position:absolute;z-index:999; width:99%; top:3%; height:100%;color:red">
+				<% if !@ong.blank? %>
+					<ul class="ca-menu">
+				    	<% @ong.each do |ong| %>
+						<li>
+				        	<a href="#">
+				           	 <span class="ca-icon">a</span>
+				            	<div class="ca-content">
+				                	<h2 class="ca-main"><%=ong.nome.capitalize %></h2>
+				                	<h3 class="ca-sub"><%=ong.descricao[0..50]+"..." %></h3>
+				            	</div>
+				        	</a>
+				    	</li>
+				 		<% end %>
+					</ul>
+				<% else %>
+					<div>Dados indisponíveis no momento</div>
+				<% end %>
+			</div>
+		</section>
+		
+	  <section class="st-panel" id="st-panel-4">
+	    <div id="div_sobre_nos" style="position:absolute;z-index:999; width:99%; top:10%; height:100%;">
+				<p>Texto apresentativo Aceg...</p>
+			</div>
+		</section>
+		
+	  <section class="st-panel" id="st-panel-5">
+	    <div id="div_contato" style="position:absolute;z-index:999; width:99%; top:10%; height:100%;">
+				formulário contato
+			</div>
+		</section>
+		
+		<!-- ... st-panel-3, st-panel-4, st-panel-5 -->
+	</div><!-- // st-scroll -->
+	
+</div><!-- // st-container -->
+
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="../../assets/javascripts/jquery.accordion.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/javascripts/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+
+<style>
+
+/* Flexible Slide-to-top Accordion Style*/
+.wrapper{
+	width:90%;
+	max-width:800px;
+	margin:30px auto;
+}
+.st-accordion{
+    width:100%;
+    min-width:270px;
+    margin: 0 auto;
+}
+.st-accordion ul li{
+    height: 100px;
+    border-bottom: 1px solid #c7deef;
+    border-top:1px solid #fff;
+    overflow: hidden;
+}
+.st-accordion ul li:first-child{
+    border-top:none;
+}
+.st-accordion ul li > a{
+    font-family: 'Josefin Slab',Georgia, serif;
+    text-shadow: 1px 1px 1px #fff;
+    font-size: 46px;
+    display: block;
+	position: relative;
+    line-height: 100px;
+	outline:none;
+    -webkit-transition:  color 0.2s ease-in-out;
+	-moz-transition:  color 0.2s ease-in-out;
+	-o-transition:  color 0.2s ease-in-out;
+	-ms-transition:  color 0.2s ease-in-out;
+	transition:  color 0.2s ease-in-out;
+}
+.st-accordion ul li > a span{
+	background: transparent url(../images/down.png) no-repeat center center;
+	text-indent:-9000px;
+	width: 26px;
+	height: 14px;
+	position: absolute;
+	top: 50%;
+	right: -26px;
+	margin-top: -7px;
+	opacity:0;
+	-webkit-transition:  all 0.2s ease-in-out;
+	-moz-transition:  all 0.2s ease-in-out;
+	-o-transition:  all 0.2s ease-in-out;
+	-ms-transition:  all 0.2s ease-in-out;
+	transition:  all 0.2s ease-in-out;
+}
+.st-accordion ul li > a:hover{
+    color: #1693eb;
+}
+.st-accordion ul li > a:hover span{
+	opacity:1;
+	right: 10px;
+}
+.st-accordion ul li.st-open > a{
+    color: #1693eb;
+}
+.st-accordion ul li.st-open > a span{
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+    transform:rotate(180deg);
+	right:10px;
+	opacity:1;
+}
+.st-content{
+    padding: 5px 0px 30px 0px;
+}
+.st-content p{
+    font-size:  16px;
+    font-family:  Georgia, serif;
+    font-style: italic;
+    line-height:  28px;
+    padding: 0px 4px 15px 4px; 
+}
+.st-content img{
+    width:125px;
+    border-right:1px solid #fff;
+    border-bottom:1px solid #fff;
+}
+@media screen and (max-width: 320px){
+	.st-accordion ul li > a{
+		font-size:36px;
+	}
+}
+
+
+/* css accordion*/
+
+
+.ac-container{
+    width: 400px;
+    margin: 10px auto 30px auto;
+		border-bottom:1px solid #8ABADD;
+		padding-bottom:5px;
+		height:120px;
+}
+
+.ac-container label{
+  font-family: 'Josefin Slab',Georgia, serif;
+    padding: 5px 20px;
+    position: relative;
+    z-index: 20;
+    display: block;
+    height: 30px;
+    cursor: pointer;
+    color: #777;
+    line-height: 33px;
+    font-size: 19px;
+    background: linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+}
+
+.ac-container label:hover{
+    background: #fff;
+}
+
+.ac-container input:checked + label,
+.ac-container input:checked + label:hover{
+    color: #3d7489;
+    text-shadow: 0px 0px 1px rgba(255,255,255, 0.6);
+}
+
+.ac-container label:hover:after,
+.ac-container input:checked + label:hover:after{
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 13px;
+    top: 7px;
+    background: transparent url(../images/arrow_down.png) no-repeat center center; 
+}
+
+.ac-container input:checked + label:hover:after{
+    background-image: url(../images/arrow_up.png);
+}
+
+.ac-container h1{color:red;}
+.ac-container h3{color:blue;top:0;}
+
+.ac-container #info_compl{background-color:red;}
+
+
+.ac-container input{
+    display: none;
+}
+
+.ac-container article{
+		width: 400px;
+    margin-top: 15px;
+    overflow: hidden;
+    height: 0px;
+    position: relative;
+		float:left;
+    z-index: 10;
+    transition:
+        height 0.3s ease-in-out,
+        box-shadow 0.6s linear;
+				border-style:none;
+}
+.ac-container input:checked ~ article{
+    transition:
+        height 0.5s ease-in-out,
+        box-shadow 0.1s linear;
+    box-shadow: 0px 0px 0px 0px rgba(155,155,155,0.3);
+		border-bottom:1px solid #8ABADD;
+}
+
+.ac-container article p{
+    font-style: italic;
+    color: #777;
+    line-height: 23px;
+    font-size: 14px;
+    padding: 20px;
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+}
+
+.ac-container input:checked ~ article.ac-small{
+    height: 140px;
+}
+.ac-container input:checked ~ article.ac-medium{
+    height: 180px;
+}
+.ac-container input:checked ~ article.ac-large{
+    height: 230px;
+}
+
+</style>
+
+
+
+
+
+

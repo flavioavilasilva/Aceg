@@ -1,0 +1,33 @@
+<%= form_for(@indicacao) do |f| %>
+  <% if @indicacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@indicacao.errors.count, "error") %> prohibited this indicacao from being saved:</h2>
+
+      <ul>
+      <% @indicacao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :estabelecimento_id %><br />
+    <%= f.number_field :estabelecimento_id %>
+  </div>
+  <div class="field">
+    <%= f.label :comentario %><br />
+    <%= f.text_field :comentario %>
+  </div>
+  <div class="field">
+    <%= f.label :nota %><br />
+    <%= f.text_field :nota %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario_id %><br />
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

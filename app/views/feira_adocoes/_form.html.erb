@@ -1,0 +1,156 @@
+<%= javascript_include_tag "geo_location_to_form.js" %>
+
+<%= form_for(@feira_adocao) do |f| %>
+  <% if @feira_adocao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feira_adocao.errors.count, "error") %> prohibited this feira_adocao from being saved:</h2>
+
+      <ul>
+      <% @feira_adocao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :usuario_id, :value=> current_usuario.id %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :inicio_feira %><br />
+    <%= f.datetime_select :inicio_feira %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :fim_feira %><br />
+    <%= f.datetime_select :fim_feira %>
+  </div>
+	
+	<%= f.fields_for :endereco_feira_adocao do |endereco_feira_adocao_fields| %>
+
+	<div>CEP:<br /> <%= endereco_feira_adocao_fields.text_field :cep, :id=>'feira_cep', :onblur=>"jsBuscaCep('feira_cep', 		'feira_adocao_endereco_feira_adocao_attributes_0_estado_id','feira_adocao_endereco_feira_adocao_attributes_0_cidade_id', 'feira_rua')" %></div>
+	<div>Rua:<br /> <%= endereco_feira_adocao_fields.text_field :rua, :id=>'feira_rua' %></div>
+	<div>Número:<br /> <%= endereco_feira_adocao_fields.text_field :numero, :id=>'feira_numero_rua' %></div>
+	<div>Estado:<br /> <%= endereco_feira_adocao_fields.collection_select( :estado_id, [], :estado, :include_blank => 'Selecione uma cidade') 		%></div>
+	<div>Cidade<br /> <%= endereco_feira_adocao_fields.collection_select(:cidade_id, [], :cidade, :include_blank => 'Selecione uma cidade' )  		%></div>
+		
+	<% end %>
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+
+	getLocation();
+
+ 	jQuery(window).load(function($){
+ 		
+ 		cep = document.getElementById( "feira_cep" ).value;
+
+ 		var intervalo = setInterval(function() {
+ 			
+ 			//Verifica se cep foi preenchido
+	    	if (cep != '')
+	    	{
+					
+						jsBuscaCep('feira_cep', 'feira_adocao_endereco_feira_adocao_attributes_0_estado_id', 
+						'feira_adocao_endereco_feira_adocao_attributes_0_cidade_id', 'feira_rua');
+						limpaIntervalo(intervalo);
+						
+					}
+					
+		  }, 2000);
+		  
+	});
+
+  function limpaIntervalo(intervalo)
+  {
+  	clearInterval(intervalo);
+	intervalo = 0;
+  }
+  
+  function getLocation()
+  {
+
+  if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(showPosition,showError);
+	}
+  else{alert("Geolocation is not supported by this browser.");}
+  }
+  
+  
+  function showPosition(position)
+  {
+  	
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  
+	var lat = parseFloat(position.coords.latitude);
+	var lng = parseFloat(position.coords.longitude);
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'latLng': latlng}, function(dataLocation, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			
+			var elementoCep = document.getElementById( "feira_cep" );
+			dadosLocalizacao(dataLocation, elementoCep)
+		
+			/*console.log('cep '+ dataLocation[0].address_components[6].long_name)
+			console.log('Estado '+ dataLocation[0].address_components[4].long_name)
+			console.log('Cidade '+ dataLocation[0].address_components[3].long_name)
+			
+			estado=dataLocation[0].address_components[4].long_name;
+			cidade=dataLocation[0].address_components[3].long_name;
+			cep=dataLocation[0].address_components[6].long_name;
+			
+			processaEstadoCidade(estado,cidade,cep);
+			console.log(dataLocation)
+			
+			document.getElementById( "feira_cep" ).value = cep;
+			console.log( "data location success urlApiGoogle");*/
+		}
+	});
+
+  }
+  
+  function showError(error)
+  {
+  	switch(error.code)
+    {
+    	case error.PERMISSION_DENIED:
+      	alert("é necessário ter acesso a dados de localização, você será redirecionado para informar de forma manual");
+     	 break;
+    	case error.POSITION_UNAVAILABLE:
+      	alert("Location information is unavailable.");
+     	 break;
+    	case error.TIMEOUT:
+      	alert("The request to get user location timed out.");
+      	break;
+    	case error.UNKNOWN_ERROR:
+      	alert("An unknown error occurred.");
+      	break;
+    }
+    
+	 var urlEstadoCidade = "/local_estado_cidade";
+	 console.log(urlEstadoCidade);
+  	
+  	$(window.document.location).attr('href',urlEstadoCidade);		
+  	 
+  }
+	
+</script>

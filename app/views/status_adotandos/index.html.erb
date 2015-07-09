@@ -1,0 +1,23 @@
+<h1>Listing status_adotandos</h1>
+
+<table>
+  <tr>
+    <th>Status adotando</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_adotandos.each do |status_adotando| %>
+  <tr>
+    <td><%= status_adotando.status_adotando %></td>
+    <td><%= link_to 'Show', status_adotando %></td>
+    <td><%= link_to 'Edit', edit_status_adotando_path(status_adotando) %></td>
+    <td><%= link_to 'Destroy', status_adotando, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status adotando', new_status_adotando_path %>
